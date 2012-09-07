@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Lista Profissionais</title>
+            </f:facet>
+        </h:head>
+        <h:body>
+            <h:outputText value="Lista de Profissionais"/>
+            <h:form>
+                <p:panelGrid columns="3">
+                    <h:outputText value="Nome:"/>
+                    <p:inputText value="#{profissionalBean.profissional.nome}" />
+                    <p:commandButton action="#{profissionalBean.pesquisar}" value="Pesquisar" update="lista" immediate="true"/>
+                </p:panelGrid>
+                <p:dataTable id="lista" value="#{profissionalBean.listaProfissional}" var="profissional" emptyMessage="Nenhum profissional encontrado.">
+                    <p:column sortBy="#{profissional.nome}" headerText="Nome">
+                        <h:outputText value="#{profissional.nome}" />
+                    </p:column>
+                    <p:column sortBy="#{profissional.email}" headerText="E-mail">
+                        <h:outputText value="#{profissional.email}" />
+                    </p:column>
+                    <p:column sortBy="#{profissional.dataNascimento}" headerText="Data Nascimento">
+                        <h:outputText value="#{profissional.dataNascimento}" />
+                    </p:column>
+                    <p:column sortBy="#{profissional.grauInstrucao}" headerText="Grau de Instrucao">
+                        <h:outputText value="#{profissional.grauInstrucao}" />
+                    </p:column>
+                    <p:column sortBy="#{profissional.funcao}" headerText="Funcao">
+                        <h:outputText value="#{profissional.funcao}" />
+                    </p:column>
+                    <p:column sortBy="#{profissional.dataAdmissao}" headerText="Data Admissao">
+                        <h:outputText value="#{profissional.dataAdmissao}" />
+                    </p:column>
+                </p:dataTable>
+                <p:panelGrid columns="3">
+                    <h:outputText />
+                    <h:outputText />
+                    <p:commandButton action="#{profissionalBean.novo}" value="Novo" update="@all" immediate="true"/>
+                </p:panelGrid>
+            </h:form>
+        </h:body>
+    </f:view>
+</html>
+

@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Lista Projetos</title>
+            </f:facet>
+        </h:head>
+        <h:body>
+            <h:form>
+                <h:panelGrid>
+                    <h:panelGroup>
+                        <h:outputText value="Lista de Projetos"/>
+                        <h:outputText/>
+                    </h:panelGroup>
+                    <h:outputText value="Nome:"/>
+                    <p:inputText value="#{projetoBean.projeto.nome}" />
+                    <p:commandButton action="#{projetoBean.pesquisar}" value="Pesquisar" update="lista" immediate="true"/>
+                    <p:dataTable id="lista" value="#{projetoBean.listaProjeto}" var="projeto" emptyMessage="Nenhum projeto encontrado.">
+                        <p:column sortBy="#{projeto.codigo}" headerText="Código">
+                            <h:outputText value="#{projeto.codigo}" />
+                        </p:column>
+                        <p:column sortBy="#{projeto.nome}" headerText="Nome">
+                            <h:outputText value="#{projeto.nome}" />
+                        </p:column>
+                        <p:column sortBy="#{projeto.dataAbertura}" headerText="Data Abertura">
+                            <h:outputText value="#{projeto.dataAbertura}" />
+                        </p:column>
+                        <p:column sortBy="#{projeto.dataTermino}" headerText="Data Termino">
+                            <h:outputText value="#{projeto.dataTermino}" />
+                        </p:column>
+                        <p:column sortBy="#{projeto.dataFechamento}" headerText="Data Fechamento">
+                            <h:outputText value="#{projeto.dataFechamento}" />
+                        </p:column>
+                        <p:column sortBy="#{projeto.gerente}" headerText="Gerente">
+                            <h:outputText value="#{projeto.gerente}" />
+                        </p:column>
+                    </p:dataTable>
+                </h:panelGrid>
+            </h:form>
+        </h:body>
+    </f:view>
+</html>
+
