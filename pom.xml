@@ -14,7 +14,8 @@
         <module>GerenciadorProjetos-common</module>
         <module>GerenciadorProjetos-service</module>
         <module>GerenciadorProjetos-web</module>
-    </modules>
+    <module>GerenciadorProjetos-service-impl</module>
+  </modules>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
