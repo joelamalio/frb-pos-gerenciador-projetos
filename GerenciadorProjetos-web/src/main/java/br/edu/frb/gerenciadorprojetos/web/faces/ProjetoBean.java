@@ -2,23 +2,25 @@ package br.edu.frb.gerenciadorprojetos.web.faces;
 
 import br.edu.frb.gerenciadorprojetos.common.entity.Profissional;
 import br.edu.frb.gerenciadorprojetos.common.entity.Projeto;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
 /**
  * @author antoniojunior87
+ * @author joelamalio
  */
 @ManagedBean(name = "projetoBean")
-@ViewScoped
-public class ProjetoBean {
+@SessionScoped
+public class ProjetoBean implements Serializable {
 
     private Projeto projeto;
     private List<Projeto> listaProjeto;
+    private Integer tamanhoListaProjeto;
 
     public ProjetoBean() {
-        projeto = new Projeto();
     }
 
     public void salvar() {
@@ -29,6 +31,14 @@ public class ProjetoBean {
         listaProjeto.add(new Projeto("Projeto 1"));
         listaProjeto.add(new Projeto("Projeto 2"));
         listaProjeto.add(new Projeto("Projeto 3"));
+        this.tamanhoListaProjeto = this.listaProjeto.size();
+    }
+    
+    public String initPesquisa() {
+        this.projeto = new Projeto();
+        this.listaProjeto = new ArrayList<Projeto>();
+        this.tamanhoListaProjeto = 0;
+        return "listaProjeto";
     }
 
     public List<Profissional> getListaProfissional() {
@@ -43,6 +53,10 @@ public class ProjetoBean {
         return projeto;
     }
 
+    public Integer getTamanhoListaProjeto() {
+        return tamanhoListaProjeto;
+    }
+    
     public void setProjeto(Projeto projeto) {
         this.projeto = projeto;
     }

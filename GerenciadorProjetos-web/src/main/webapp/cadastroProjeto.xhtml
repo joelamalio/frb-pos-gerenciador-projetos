@@ -1,42 +1,40 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
+    <h:body>
 
-    <f:view contentType="text/html">
-        <h:head>
-            <f:facet name="first">
-                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>Cadastro Projeto</title>
-            </f:facet>
-        </h:head>
-        <h:body>
-            <h:form>
-                <h:panelGrid>
-                    <h:panelGroup>
-                        <h:outputText value="Cadastro de Projeto"/>
-                        <h:outputText/>
-                    </h:panelGroup>
-                    <h:outputText value="Nome:"/>
-                    <p:inputText value="#{projetoBean.projeto.nome}" />
-                    <h:outputText value="Código:"/>
-                    <p:inputText value="#{projetoBean.projeto.codigo}" />
-                    <h:outputText value="Data Abertura:"/>
-                    <p:calendar value="#{projetoBean.projeto.dataAbertura}" />
-                    <h:outputText value="Data Prevista Término:"/>
-                    <p:calendar value="#{projetoBean.projeto.dataTermino}" />
-                    <h:outputText value="Data Fechamento:"/>
-                    <p:calendar value="#{projetoBean.projeto.dataFechamento}" />
-                    <h:outputText value="Gerente:"/>
-                    <p:selectOneMenu  value="#{projetoBean.projeto.gerente}">
-                        <f:selectItems value="#{projetoBean.listaProfissional}"/>
-                    </p:selectOneMenu>
-                    <p:commandButton action="#{projetoBean.salvar}" value="Salvar"  />
-                </h:panelGrid>
-            </h:form>
-        </h:body>
-    </f:view>
+        <ui:composition template="template/template.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <h:panelGrid>
+                        <h:panelGroup>
+                            <h:outputText value="Cadastro de Projeto"/>
+                            <h:outputText/>
+                        </h:panelGroup>
+                        <h:outputText value="Nome:"/>
+                        <p:inputText value="#{projetoBean.projeto.nome}" />
+                        <h:outputText value="Código:"/>
+                        <p:inputText value="#{projetoBean.projeto.codigo}" />
+                        <h:outputText value="Data Abertura:"/>
+                        <p:calendar value="#{projetoBean.projeto.dataAbertura}" />
+                        <h:outputText value="Data Prevista Término:"/>
+                        <p:calendar value="#{projetoBean.projeto.dataTermino}" />
+                        <h:outputText value="Data Fechamento:"/>
+                        <p:calendar value="#{projetoBean.projeto.dataFechamento}" />
+                        <h:outputText value="Gerente:"/>
+                        <p:selectOneMenu  value="#{projetoBean.projeto.gerente}">
+                            <f:selectItems value="#{projetoBean.listaProfissional}"/>
+                        </p:selectOneMenu>
+                        <p:commandButton action="#{projetoBean.salvar}" value="Salvar"  />
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
 </html>
-

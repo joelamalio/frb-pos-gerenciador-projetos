@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <body>
+        <ui:composition>
+
+            <h:panelGroup rendered="#{true}" layout="block" >
+                <div id="divHeader">
+                    <div id="divMenu">
+                        <h:form id="formHeader">
+                            <p:tabMenu activeIndex="0">  
+                                <p:menuitem outcome="index" value="Home" icon="ui-icon-star"/>  
+                                <p:menuitem action="#{profissionalBean.initPesquisa}" value="Profissional" icon="ui-icon-star"/>  
+                                <p:menuitem action="#{projetoBean.initPesquisa}" value="Projeto" icon="ui-icon-search" />  
+                                <p:menuitem outcome="listaProjeto" value="Projeto" icon="ui-icon-document"/>  
+                                <p:menuitem outcome="listaProjeto" value="Projeto" icon="ui-icon-wrench"/>  
+                                <p:menuitem outcome="listaProjeto" value="Projeto" icon="ui-icon-person" />  
+                            </p:tabMenu>  
+                        </h:form>
+                    </div>
+                    <div id="divUsuario">
+                        <h:form id="formLogout"> 
+                            <p>
+                                Usuário -
+                                <h:commandLink value="Sair" action="#{loginBean.sair}"/>
+                            </p>
+                        </h:form>
+                    </div>
+                </div>
+            </h:panelGroup>
+
+        </ui:composition>
+    </body>
+</html>

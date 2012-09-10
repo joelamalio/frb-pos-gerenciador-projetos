@@ -40,8 +40,13 @@
             <version>3.4</version>  
         </dependency> 
         <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>blitzer</artifactId>
+            <version>1.0.8</version>
+        </dependency>
+        <dependency>
             <groupId>br.edu.frb.gerenciadorprojetos</groupId>
-            <artifactId>GerenciadorProjetos-service</artifactId>
+            <artifactId>GerenciadorProjetos-service-impl</artifactId>
             <version>${version.gerenciador.projetos}</version>
         </dependency>
     </dependencies>

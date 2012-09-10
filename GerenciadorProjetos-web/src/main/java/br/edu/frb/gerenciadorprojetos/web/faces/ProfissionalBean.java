@@ -8,19 +8,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
 /**
  * @author antoniojunior87
+ * @author joelamalio
  */
 @ManagedBean(name = "profissionalBean")
-@ViewScoped
+@SessionScoped
 public class ProfissionalBean {
 
     //@javax.inject.Inject
     private Service service;
     private Profissional profissional;
     private List<Profissional> listaProfissional;
+    private Integer tamanhoListaProfissional;
 
     public ProfissionalBean() {
         profissional = new Profissional();
@@ -40,14 +42,18 @@ public class ProfissionalBean {
         listaProfissional.add(new Profissional("João"));
         listaProfissional.add(new Profissional("Maria"));
         listaProfissional.add(new Profissional("Jesus"));
+        this.tamanhoListaProfissional = this.listaProfissional.size();
+    }
+    
+    public String initPesquisa() {
+        this.profissional = new Profissional();
+        this.listaProfissional = new ArrayList<Profissional>();
+        this.tamanhoListaProfissional = 0;
+        return "listaProfissional";
     }
 
     public Profissional getProfissional() {
         return profissional;
-    }
-
-    public void setProfissional(Profissional profissional) {
-        this.profissional = profissional;
     }
 
     public List<GrauInstrucao> getListaGrauInstrucao() {
@@ -57,6 +63,14 @@ public class ProfissionalBean {
 
     public List<Profissional> getListaProfissional() {
         return listaProfissional;
+    }
+
+    public Integer getTamanhoListaProfissional() {
+        return tamanhoListaProfissional;
+    }
+    
+    public void setProfissional(Profissional profissional) {
+        this.profissional = profissional;
     }
 
     public void setListaProfissional(List<Profissional> listaProfissional) {
