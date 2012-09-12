@@ -32,7 +32,6 @@
                         </p:selectOneMenu>
                         <h:outputText value="Função:"/>
                         <p:selectOneMenu  value="#{profissionalBean.profissional.funcao}" converter="FuncaoConverter">
-                            <f:selectItem itemLabel="<<Selecione>>" itemValue="" noSelectionOption="true" /> 
                             <f:selectItems value="#{profissionalBean.listaFuncao}" var="funcao" itemLabel="#{funcao.descricao}" itemValue="#{funcao.id}"/>
                         </p:selectOneMenu>
                         <h:outputText value="Data Admissão:"/>
