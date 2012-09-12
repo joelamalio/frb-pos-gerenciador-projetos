@@ -11,8 +11,7 @@ import javax.persistence.*;
 public class Usuario implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "USUA_ID", allocationSize = 1, initialValue = 1, sequenceName = "USUA_ID")
-    @GeneratedValue(generator = "USUA_ID", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USUA_ID")
     private Long id;
     @Column(name = "USUA_EMAIL")

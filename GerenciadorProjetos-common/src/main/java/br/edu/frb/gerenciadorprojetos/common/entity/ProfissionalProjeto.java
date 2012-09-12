@@ -11,8 +11,7 @@ import javax.persistence.*;
 public class ProfissionalProjeto implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "PRPR_ID", allocationSize = 1, initialValue = 1, sequenceName = "PRPR_ID")
-    @GeneratedValue(generator = "PRPR_ID", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PRPR_ID")
     private Long id;
     @Transient

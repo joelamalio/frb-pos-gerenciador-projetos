@@ -12,8 +12,7 @@ import javax.persistence.*;
 public class Tarefa implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "TARE_ID", allocationSize = 1, initialValue = 1, sequenceName = "TARE_ID")
-    @GeneratedValue(generator = "TARE_ID", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TARE_ID")
     private Long id;
     @Column(name = "TARE_DESCRICAO")

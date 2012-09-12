@@ -1,9 +1,7 @@
 package br.edu.frb.gerenciadorprojetos.common.entity;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * @author antoniojunior87
@@ -13,6 +11,7 @@ import javax.persistence.Id;
 public class Funcao implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "FUNC_ID")
     private Long id;
     @Column(name = "FUNC_DESCRICAO")
