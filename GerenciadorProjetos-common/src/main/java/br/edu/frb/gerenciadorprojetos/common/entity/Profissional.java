@@ -40,6 +40,7 @@ public class Profissional implements Serializable {
     private Set<Tarefa> tarefas;
 
     public Profissional() {
+        usuario = new Usuario();
     }
 
     public Profissional(String nome) {
@@ -117,7 +118,7 @@ public class Profissional implements Serializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
+
     public void adicionar(final Tarefa tarefa) {
         if (this.tarefas == null) {
             this.tarefas = new HashSet<Tarefa>();
