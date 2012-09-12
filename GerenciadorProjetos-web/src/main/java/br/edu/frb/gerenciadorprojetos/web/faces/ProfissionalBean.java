@@ -3,12 +3,15 @@ package br.edu.frb.gerenciadorprojetos.web.faces;
 import br.edu.frb.gerenciadorprojetos.common.entity.Funcao;
 import br.edu.frb.gerenciadorprojetos.common.entity.GrauInstrucao;
 import br.edu.frb.gerenciadorprojetos.common.entity.Profissional;
-import br.edu.frb.gerenciadorprojetos.service.business.Service;
+import br.edu.frb.gerenciadorprojetos.gerenciadorprojetos.service.business.ProfissionalService;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  * @author antoniojunior87
@@ -18,18 +21,19 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class ProfissionalBean {
 
-    //@javax.inject.Inject
-    private Service service;
     private Profissional profissional;
     private List<Profissional> listaProfissional;
     private Integer tamanhoListaProfissional;
+    @EJB()
+    private ProfissionalService service;
 
     public ProfissionalBean() {
         profissional = new Profissional();
     }
 
     public String salvar() {
-        service.getDao().persist(profissional);
+        service.salvar(profissional);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Profissional Salvo"));
         return "listaProfissional";
     }
 
@@ -38,13 +42,14 @@ public class ProfissionalBean {
     }
 
     public void pesquisar() {
-        listaProfissional = new ArrayList<Profissional>();
-        listaProfissional.add(new Profissional("João"));
-        listaProfissional.add(new Profissional("Maria"));
-        listaProfissional.add(new Profissional("Jesus"));
-        this.tamanhoListaProfissional = this.listaProfissional.size();
+        listaProfissional = service.listar();
+//        listaProfissional = new ArrayList<Profissional>();
+//        listaProfissional.add(new Profissional("João"));
+//        listaProfissional.add(new Profissional("Maria"));
+//        listaProfissional.add(new Profissional("Jesus"));
+//        this.tamanhoListaProfissional = this.listaProfissional.size();
     }
-    
+
     public String initPesquisa() {
         this.profissional = new Profissional();
         this.listaProfissional = new ArrayList<Profissional>();
@@ -68,7 +73,7 @@ public class ProfissionalBean {
     public Integer getTamanhoListaProfissional() {
         return tamanhoListaProfissional;
     }
-    
+
     public void setProfissional(Profissional profissional) {
         this.profissional = profissional;
     }

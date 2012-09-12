@@ -16,6 +16,10 @@
     
     <name>GerenciadorProjetos-common</name>
     
+    <properties>
+        <hibernate.core.version>3.6.10.Final</hibernate.core.version>
+    </properties>
+    
     <url>http://maven.apache.org</url>
     <build>
         <plugins>
@@ -30,4 +34,43 @@
             </plugin>
         </plugins>
     </build>
+    <repositories>
+        <repository>
+            <url>http://download.eclipse.org/rt/eclipselink/maven.repo/</url>
+            <id>eclipselink</id>
+            <layout>default</layout>
+            <name>Repository for library Library[eclipselink]</name>
+        </repository>
+        <repository>
+            <url>http://download.java.net/maven/2/</url>
+            <id>javaee-api-6.0</id>
+            <layout>default</layout>
+            <name>Repository for library Library[javaee-api-6.0]</name>
+        </repository>
+    </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>jsr250-api</artifactId>
+            <version>1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>1.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 </project>

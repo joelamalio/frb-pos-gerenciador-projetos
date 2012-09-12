@@ -30,7 +30,7 @@
         <dependency>
             <groupId>br.edu.frb.gerenciadorprojetos</groupId>
             <artifactId>GerenciadorProjetos-common</artifactId>
-            <version>${version.gerenciador.projetos}</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

@@ -16,7 +16,6 @@
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
-        <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
     </properties>
     
     <repositories>
@@ -34,6 +33,12 @@
             <artifactId>javaee-web-api</artifactId>
             <version>6.0</version>
             <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>  
             <groupId>org.primefaces</groupId>  

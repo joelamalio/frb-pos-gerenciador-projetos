@@ -10,7 +10,7 @@
         <ui:composition template="template/template.xhtml">
             <ui:define name="content">
                 <h:form>
-                    <p:growl showDetail="true"/>
+                    <p:growl showDetail="true" id="messages"/>
                     <h:panelGrid>
                         <h:panelGroup>
                             <h:outputText value="Cadastro de Profissional"/>
@@ -36,7 +36,7 @@
                         </p:selectOneMenu>
                         <h:outputText value="Data Admissão:"/>
                         <p:calendar value="#{profissionalBean.profissional.dataAdmissao}" />
-                        <p:commandButton action="#{profissionalBean.salvar}" value="Salvar" update="@all" />
+                        <p:commandButton action="#{profissionalBean.salvar}" value="Salvar" update="messages" />
                     </h:panelGrid>
                 </h:form>
             </ui:define>
