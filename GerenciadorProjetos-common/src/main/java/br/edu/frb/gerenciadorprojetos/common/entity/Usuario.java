@@ -11,13 +11,15 @@ import javax.persistence.*;
 public class Usuario implements Serializable {
 
     @Id
+    @SequenceGenerator(name = "USUA_ID", allocationSize = 1, initialValue = 1, sequenceName = "USUA_ID")
+    @GeneratedValue(generator = "USUA_ID", strategy = GenerationType.SEQUENCE)
     @Column(name = "USUA_ID")
     private Long id;
     @Column(name = "USUA_EMAIL")
     private String email;
     @Column(name = "USUA_SENHA")
     private String senha;
-    @OneToOne(mappedBy = "usuario", fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PROF_ID", referencedColumnName = "PROF_ID")
     private Profissional profissional;
 

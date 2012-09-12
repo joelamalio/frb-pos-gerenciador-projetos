@@ -12,9 +12,12 @@ import javax.persistence.*;
  * @author joelamalio
  */
 @Entity(name = "PROFISSIONAL")
+@Table(name = "PROFISSIONAL")
 public class Profissional implements Serializable {
 
     @Id
+    @SequenceGenerator(name = "SQ_PROF_ID", allocationSize = 1, initialValue = 1, sequenceName = "SQ_PROF_ID")
+    @GeneratedValue(generator = "SQ_PROF_ID", strategy = GenerationType.SEQUENCE)
     @Column(name = "PROF_ID")
     private Long id;
     @Column(name = "PROF_NOME")
@@ -33,7 +36,7 @@ public class Profissional implements Serializable {
     @Enumerated(value = EnumType.STRING)
     @Column(name = "PROF_GRAU_INSTRUCAO")
     private GrauInstrucao grauInstrucao;
-    @OneToOne(mappedBy = "profissional", fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USUA_ID", referencedColumnName = "USUA_ID")
     private Usuario usuario = new Usuario();
     @OneToMany(mappedBy = "responsavel", fetch = FetchType.LAZY)

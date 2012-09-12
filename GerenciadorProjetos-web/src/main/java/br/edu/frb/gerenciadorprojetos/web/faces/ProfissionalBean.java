@@ -43,6 +43,11 @@ public class ProfissionalBean implements Serializable {
     }
 
     public void pesquisar() {
+        Profissional p = new Profissional();
+        p.setCpf("123456798");
+        service.salvar(p);
+
+
         listaProfissional = service.listar();
 //        listaProfissional = new ArrayList<Profissional>();
 //        listaProfissional.add(new Profissional("João"));

@@ -2,9 +2,7 @@ package br.edu.frb.gerenciadorprojetos.common.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 /**
  * @author antoniojunior87
@@ -13,6 +11,8 @@ import javax.persistence.Transient;
 public class ProfissionalProjeto implements Serializable {
 
     @Id
+    @SequenceGenerator(name = "PRPR_ID", allocationSize = 1, initialValue = 1, sequenceName = "PRPR_ID")
+    @GeneratedValue(generator = "PRPR_ID", strategy = GenerationType.SEQUENCE)
     @Column(name = "PRPR_ID")
     private Long id;
     @Transient
