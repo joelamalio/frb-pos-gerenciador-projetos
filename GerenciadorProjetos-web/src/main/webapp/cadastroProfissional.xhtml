@@ -1,41 +1,48 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui"
-                template="template/template.xhtml">
-    <ui:define name="content">
-        <h:form>
-            <p:growl autoUpdate="true" showDetail="true" id="messages"/>
-            <h:panelGrid>
-                <h:panelGroup>
-                    <h:outputText value="Cadastro de Profissional"/>
-                    <h:outputText/>
-                </h:panelGroup>
-                <h:outputText value="Nome:"/>
-                <p:inputText value="#{profissionalBean.profissional.nome}"  />
-                <h:outputText value="E-mail:"/>
-                <p:inputText value="#{profissionalBean.profissional.usuario.email}" />
-                <h:outputText value="Senha:"/>
-                <p:password value="#{profissionalBean.profissional.usuario.senha}" />
-                <h:outputText value="Cpf:"/>
-                <p:inputMask mask="999.999.999-99" value="#{profissionalBean.profissional.cpf}" />
-                <h:outputText value="Data Nascimento:"/>
-                <p:calendar value="#{profissionalBean.profissional.dataNascimento}" />
-                <h:outputText value="Grau de Instrução:"/>
-                <p:selectOneMenu  value="#{profissionalBean.profissional.grauInstrucao}">
-                    <f:selectItems value="#{profissionalBean.listaGrauInstrucao}"/>
-                </p:selectOneMenu>
-                <h:outputText value="Função:"/>
-                <p:selectOneMenu  value="#{profissionalBean.profissional.funcao}" converter="FuncaoConverter">
-                    <f:selectItem itemLabel="<<Selecione>>" itemValue="" noSelectionOption="true" /> 
-                    <f:selectItems value="#{profissionalBean.listaFuncao}" var="funcao" itemLabel="#{funcao.descricao}" itemValue="#{funcao.id}"/>
-                </p:selectOneMenu>
-                <h:outputText value="Data Admissão:"/>
-                <p:calendar value="#{profissionalBean.profissional.dataAdmissao}" />
-                <p:commandButton action="#{profissionalBean.salvar}" value="Salvar" update="@form" />
-            </h:panelGrid>
-        </h:form>
-    </ui:define>
-</ui:composition>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:body>
+
+        <ui:composition template="template/template.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <p:growl autoUpdate="true" showDetail="true" id="messages"/>
+                    <h:panelGrid>
+                        <h:panelGroup>
+                            <h:outputText value="Cadastro de Profissional"/>
+                            <h:outputText/>
+                        </h:panelGroup>
+                        <h:outputText value="Nome:"/>
+                        <p:inputText value="#{profissionalBean.profissional.nome}"  />
+                        <h:outputText value="E-mail:"/>
+                        <p:inputText value="#{profissionalBean.profissional.usuario.email}" />
+                        <h:outputText value="Senha:"/>
+                        <p:password value="#{profissionalBean.profissional.usuario.senha}" />
+                        <h:outputText value="Cpf:"/>
+                        <p:inputMask mask="999.999.999-99" value="#{profissionalBean.profissional.cpf}" />
+                        <h:outputText value="Data Nascimento:"/>
+                        <p:calendar value="#{profissionalBean.profissional.dataNascimento}" />
+                        <h:outputText value="Grau de Instrução:"/>
+                        <p:selectOneMenu  value="#{profissionalBean.profissional.grauInstrucao}">
+                            <f:selectItems value="#{profissionalBean.listaGrauInstrucao}"/>
+                        </p:selectOneMenu>
+                        <h:outputText value="Função:"/>
+                        <p:selectOneMenu  value="#{profissionalBean.profissional.funcao}" converter="FuncaoConverter">
+                            <f:selectItem itemLabel="<<Selecione>>" itemValue="" noSelectionOption="true" /> 
+                            <f:selectItems value="#{profissionalBean.listaFuncao}" var="funcao" itemLabel="#{funcao.descricao}" itemValue="#{funcao.id}"/>
+                        </p:selectOneMenu>
+                        <h:outputText value="Data Admissão:"/>
+                        <p:calendar value="#{profissionalBean.profissional.dataAdmissao}" />
+                        <p:commandButton action="#{profissionalBean.salvar}" value="Salvar" update="@form"/>
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>
+
