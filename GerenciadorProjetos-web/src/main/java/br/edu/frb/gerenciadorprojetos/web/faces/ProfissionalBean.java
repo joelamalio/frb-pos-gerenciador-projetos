@@ -4,6 +4,7 @@ import br.edu.frb.gerenciadorprojetos.common.entity.Funcao;
 import br.edu.frb.gerenciadorprojetos.common.entity.GrauInstrucao;
 import br.edu.frb.gerenciadorprojetos.common.entity.Profissional;
 import br.edu.frb.gerenciadorprojetos.gerenciadorprojetos.service.business.ProfissionalService;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +20,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean(name = "profissionalBean")
 @SessionScoped
-public class ProfissionalBean {
+public class ProfissionalBean implements Serializable {
 
     private Profissional profissional;
     private List<Profissional> listaProfissional;
