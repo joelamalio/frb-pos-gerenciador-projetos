@@ -16,6 +16,7 @@
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+        <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
     </properties>
     
     <repositories>
@@ -38,7 +39,17 @@
             <groupId>org.primefaces</groupId>  
             <artifactId>primefaces</artifactId>  
             <version>3.4</version>  
-        </dependency> 
+        </dependency>
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+            <version>2.1.7</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-impl</artifactId>
+            <version>2.1.7</version>
+        </dependency>
         <dependency>
             <groupId>org.primefaces.themes</groupId>
             <artifactId>blitzer</artifactId>
