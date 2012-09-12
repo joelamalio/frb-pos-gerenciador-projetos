@@ -15,8 +15,7 @@ import javax.persistence.*;
 public class Projeto implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "PROJ_ID", allocationSize = 1, initialValue = 1, sequenceName = "PROJ_ID")
-    @GeneratedValue(generator = "PROJ_ID", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PROJ_ID")
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
