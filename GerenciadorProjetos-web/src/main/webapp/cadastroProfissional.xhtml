@@ -5,8 +5,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-    <h:body>
-
+    <f:view>
         <ui:composition template="template/template.xhtml">
             <ui:define name="content">
                 <h:form>
@@ -32,16 +31,15 @@
                         </p:selectOneMenu>
                         <h:outputText value="Função:"/>
                         <p:selectOneMenu  value="#{profissionalBean.profissional.funcao}">
-                            <f:selectItems value="#{profissionalBean.listaFuncao}"/>
+                            <f:selectItems value="#{profissionalBean.listaFuncao}" var="funcao" itemLabel="#{funcao.descricao}" itemValue="#{funcao.id}"/>
                         </p:selectOneMenu>
                         <h:outputText value="Data Admissão:"/>
                         <p:calendar value="#{profissionalBean.profissional.dataAdmissao}" />
-                        <p:commandButton action="#{profissionalBean.salvar}" value="Salvar" ajax="false" />
+                        <p:commandButton action="#{profissionalBean.salvar}" value="Salvar" ajax="true"  />
                     </h:panelGrid>
                 </h:form>
             </ui:define>
         </ui:composition>
-
-    </h:body>
+    </f:view>
 </html>
 

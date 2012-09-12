@@ -29,15 +29,15 @@ public class Profissional implements Serializable {
     private Date dataAdmissao;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FUNC_ID", referencedColumnName = "FUNC_ID")
-    private Funcao funcao;
+    private Funcao funcao = new Funcao();
     @Enumerated(value = EnumType.STRING)
     @Column(name = "PROF_GRAU_INSTRUCAO")
     private GrauInstrucao grauInstrucao;
     @OneToOne(mappedBy = "profissional", fetch = FetchType.LAZY)
     @JoinColumn(name = "USUA_ID", referencedColumnName = "USUA_ID")
-    private Usuario usuario;
+    private Usuario usuario = new Usuario();
     @OneToMany(mappedBy = "responsavel", fetch = FetchType.LAZY)
-    private Set<Tarefa> tarefas;
+    private Set<Tarefa> tarefas = new HashSet<Tarefa>();
 
     public Profissional() {
         usuario = new Usuario();

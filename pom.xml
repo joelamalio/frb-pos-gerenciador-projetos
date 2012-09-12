@@ -24,7 +24,6 @@
     </build>
     <modules>
         <module>GerenciadorProjetos-common</module>
-        <module>GerenciadorProjetos-service</module>
         <module>GerenciadorProjetos-web</module>
     <module>GerenciadorProjetos-service-impl</module>
   </modules>
