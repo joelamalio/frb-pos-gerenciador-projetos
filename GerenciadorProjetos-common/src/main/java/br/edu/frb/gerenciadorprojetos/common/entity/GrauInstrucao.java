@@ -8,10 +8,11 @@ import java.io.Serializable;
  */
 public enum GrauInstrucao implements Serializable {
 
-    TECNICO("TEC", "TECNICO"),
-    SUPERIOR("SUP", "SUPERIOR"),
+    DOUTORADO("DOU", "DOUTORADO"),
     MESTRADO("MES", "MESTRADO"),
-    DOUTORADO("DOU", "DOUTORADO");
+    SUPERIOR("SUP", "SUPERIOR"),
+    TECNICO("TEC", "TECNICO"),
+    ;
     private String id;
     private String descricao;
 

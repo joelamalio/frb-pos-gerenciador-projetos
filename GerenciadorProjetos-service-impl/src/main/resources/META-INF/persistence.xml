@@ -5,10 +5,10 @@
         <jar-file>GerenciadorProjetos-common-1.0.0-SNAPSHOT.jar</jar-file>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
-            <property name="javax.persistence.jdbc.password" value="app"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/gerenciador"/>
+            <property name="javax.persistence.jdbc.password" value="gerenciador"/>
             <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
-            <property name="javax.persistence.jdbc.user" value="app"/>
+            <property name="javax.persistence.jdbc.user" value="gerenciador"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.archive.autodetection" value="class"/>
             <property name="hibernate.show_sql" value="true" />

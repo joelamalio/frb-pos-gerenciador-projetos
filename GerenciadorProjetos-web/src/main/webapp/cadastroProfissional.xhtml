@@ -28,11 +28,11 @@
                         <p:calendar value="#{profissionalBean.profissional.dataNascimento}" />
                         <h:outputText value="Grau de Instrução:"/>
                         <p:selectOneMenu  value="#{profissionalBean.profissional.grauInstrucao}">
-                            <f:selectItems value="#{profissionalBean.listaGrauInstrucao}"/>
+                            <f:selectItems value="#{profissionalBean.listaGrauInstrucao}" var="grauInstrucao" itemLabel="#{grauInstrucao.descricao}" itemValue="#{grauInstrucao.id}"/>
                         </p:selectOneMenu>
                         <h:outputText value="Função:"/>
-                        <p:selectOneMenu  value="#{profissionalBean.profissional.funcao}">
-                            <f:selectItems value="#{profissionalBean.listaFuncao}"/>
+                        <p:selectOneMenu  value="#{profissionalBean.profissional.funcao}" converter="FuncaoConverter">
+                            <f:selectItems value="#{profissionalBean.listaFuncao}" var="funcao" itemLabel="#{funcao.descricao}" itemValue="#{funcao.id}"/>
                         </p:selectOneMenu>
                         <h:outputText value="Data Admissão:"/>
                         <p:calendar value="#{profissionalBean.profissional.dataAdmissao}" />
