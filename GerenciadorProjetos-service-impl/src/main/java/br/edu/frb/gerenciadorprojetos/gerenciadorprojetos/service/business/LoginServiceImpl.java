@@ -2,6 +2,7 @@ package br.edu.frb.gerenciadorprojetos.gerenciadorprojetos.service.business;
 
 import br.edu.frb.gerenciadorprojetos.common.entity.Usuario;
 import br.edu.frb.gerenciadorprojetos.gerenciadorprojetos.service.business.dao.GenericDao;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -27,7 +28,9 @@ public class LoginServiceImpl implements LoginService {
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     @Override
     public Usuario logar(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        dao.salvarOuAtualizar(usuario);
+        
+        return usuario;
     }
     
 }
