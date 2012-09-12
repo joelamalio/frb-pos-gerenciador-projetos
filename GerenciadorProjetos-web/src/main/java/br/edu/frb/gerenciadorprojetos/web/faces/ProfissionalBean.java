@@ -3,7 +3,7 @@ package br.edu.frb.gerenciadorprojetos.web.faces;
 import br.edu.frb.gerenciadorprojetos.common.entity.Funcao;
 import br.edu.frb.gerenciadorprojetos.common.entity.GrauInstrucao;
 import br.edu.frb.gerenciadorprojetos.common.entity.Profissional;
-import br.edu.frb.gerenciadorprojetos.gerenciadorprojetos.service.business.ProfissionalService;
+import br.edu.frb.gerenciadorprojetos.common.business.ProfissionalService;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;

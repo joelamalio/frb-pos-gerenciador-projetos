@@ -1,5 +1,6 @@
 package br.edu.frb.gerenciadorprojetos.gerenciadorprojetos.service.business;
 
+import br.edu.frb.gerenciadorprojetos.common.business.ProfissionalService;
 import br.edu.frb.gerenciadorprojetos.common.entity.Profissional;
 import br.edu.frb.gerenciadorprojetos.gerenciadorprojetos.service.business.dao.GenericDao;
 import java.util.List;
