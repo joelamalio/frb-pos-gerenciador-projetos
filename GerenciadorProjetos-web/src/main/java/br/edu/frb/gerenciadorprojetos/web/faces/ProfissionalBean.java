@@ -1,9 +1,10 @@
 package br.edu.frb.gerenciadorprojetos.web.faces;
 
+import br.edu.frb.gerenciadorprojetos.common.business.FuncaoService;
+import br.edu.frb.gerenciadorprojetos.common.business.ProfissionalService;
 import br.edu.frb.gerenciadorprojetos.common.entity.Funcao;
 import br.edu.frb.gerenciadorprojetos.common.entity.GrauInstrucao;
 import br.edu.frb.gerenciadorprojetos.common.entity.Profissional;
-import br.edu.frb.gerenciadorprojetos.gerenciadorprojetos.service.business.ProfissionalService;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,6 +28,8 @@ public class ProfissionalBean implements Serializable {
     private Integer tamanhoListaProfissional;
     @EJB()
     private ProfissionalService service;
+    @EJB()
+    private FuncaoService funcaoService;
 
     public ProfissionalBean() {
         profissional = new Profissional();
@@ -43,17 +46,7 @@ public class ProfissionalBean implements Serializable {
     }
 
     public void pesquisar() {
-        Profissional p = new Profissional();
-        p.setCpf("123456798");
-        service.salvar(p);
-
-
         listaProfissional = service.listar();
-//        listaProfissional = new ArrayList<Profissional>();
-//        listaProfissional.add(new Profissional("João"));
-//        listaProfissional.add(new Profissional("Maria"));
-//        listaProfissional.add(new Profissional("Jesus"));
-//        this.tamanhoListaProfissional = this.listaProfissional.size();
     }
 
     public String initPesquisa() {
@@ -89,12 +82,6 @@ public class ProfissionalBean implements Serializable {
     }
 
     public List<Funcao> getListaFuncao() {
-        List<Funcao> lista = new ArrayList<Funcao>();
-        lista.add(new Funcao("Analista JR"));
-        lista.add(new Funcao("Analista Pleno"));
-        lista.add(new Funcao("Analista Senior"));
-        lista.add(new Funcao("Programador"));
-        lista.add(new Funcao("Gerente"));
-        return lista;
+        return funcaoService.listar();
     }
 }

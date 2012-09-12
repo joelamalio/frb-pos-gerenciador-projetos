@@ -1,4 +1,4 @@
-package br.edu.frb.gerenciadorprojetos.gerenciadorprojetos.service.business;
+package br.edu.frb.gerenciadorprojetos.common.business;
 
 import br.edu.frb.gerenciadorprojetos.common.entity.Profissional;
 import java.util.List;

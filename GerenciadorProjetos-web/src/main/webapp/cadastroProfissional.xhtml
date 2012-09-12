@@ -34,9 +34,8 @@
                 </p:selectOneMenu>
                 <h:outputText value="Data Admissão:"/>
                 <p:calendar value="#{profissionalBean.profissional.dataAdmissao}" />
-                <p:commandButton action="#{profissionalBean.salvar}" value="Salvar" ajax="true"  />
+                <p:commandButton action="#{profissionalBean.salvar}" value="Salvar" update="@form" />
             </h:panelGrid>
         </h:form>
     </ui:define>
 </ui:composition>
-
