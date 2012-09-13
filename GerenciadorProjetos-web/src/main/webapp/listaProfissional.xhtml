@@ -24,14 +24,14 @@
                                     <p:inputText value="#{profissionalBean.profissional.nome}" />
                                 </p:column>
                                 <p:columnGroup>
-                                    <p:commandButton action="#{profissionalBean.pesquisar}" value="Pesquisar" update="resultados" immediate="true"/>
+                                    <p:commandButton action="#{profissionalBean.pesquisar}" value="Pesquisar" update="@all" immediate="true"/>
                                     <p:commandButton action="#{profissionalBean.initPesquisa}" value="Limpar" update="formProfissional" immediate="true"/>
                                     <p:commandButton action="#{profissionalBean.novo}" value="Novo" process="@this" update="@none" immediate="true" />
                                 </p:columnGroup>
                             </h:panelGrid>  
                         </p:fieldset>
                         <h:panelGroup id="resultados">
-                            <p:fieldset legend="Resultado" rendered="#{profissionalBean.tamanhoListaProfissional > 0}">  
+                            <p:fieldset legend="Resultado">  
                                 <h:panelGrid cellpadding="10" >  
                                     <p:dataTable id="lista" value="#{profissionalBean.listaProfissional}" var="profissional" emptyMessage="Nenhum profissional encontrado.">
                                         <p:column sortBy="#{profissional.nome}" headerText="Nome">

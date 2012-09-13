@@ -12,7 +12,7 @@ import javax.persistence.*;
  * @author joelamalio
  */
 @Entity(name = "PROFISSIONAL")
-@Table(name = "PROFISSIONAL")
+@Table(name = "PROFISSIONAL", schema = "GERENCIADOR")
 public class Profissional implements Serializable {
 
     @Id
@@ -31,18 +31,17 @@ public class Profissional implements Serializable {
     private Date dataAdmissao;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FUNC_ID", referencedColumnName = "FUNC_ID")
-    private Funcao funcao = new Funcao();
+    private Funcao funcao;
     @Enumerated(value = EnumType.STRING)
     @Column(name = "PROF_GRAU_INSTRUCAO")
     private GrauInstrucao grauInstrucao;
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USUA_ID", referencedColumnName = "USUA_ID")
-    private Usuario usuario = new Usuario();
+    private Usuario usuario;
     @OneToMany(mappedBy = "responsavel", fetch = FetchType.LAZY)
     private Set<Tarefa> tarefas = new HashSet<Tarefa>();
 
     public Profissional() {
-        usuario = new Usuario();
     }
 
     public Profissional(String nome) {
