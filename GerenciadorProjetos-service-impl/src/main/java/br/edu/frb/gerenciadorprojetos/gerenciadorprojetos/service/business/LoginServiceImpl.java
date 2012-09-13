@@ -27,10 +27,20 @@ public class LoginServiceImpl implements LoginService {
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     @Override
-    public Usuario logar(Usuario usuario) {
-        dao.salvarOuAtualizar(usuario);
+    public Usuario logar(Usuario usuario) {        
+        List<Object> usuarios = (List<Object>)dao.buscarPorNativeQuery(this.retornarBuscaUsuario(usuario));
         
-        return usuario;
+        if (!usuarios.isEmpty()) {
+            return (Usuario)usuarios.get(0);
+        }else return null;
+        
+    }
+    
+    private String retornarBuscaUsuario(Usuario usuario){
+        String sql = "SELECT u.* FROM Usuario u ";
+        sql += " WHERE u.USUA_EMAIL = '" + usuario.getEmail() + "'";
+        sql += " AND u.USUA_SENHA = '" + usuario.getSenha() + "'";
+        return sql;
     }
     
 }
