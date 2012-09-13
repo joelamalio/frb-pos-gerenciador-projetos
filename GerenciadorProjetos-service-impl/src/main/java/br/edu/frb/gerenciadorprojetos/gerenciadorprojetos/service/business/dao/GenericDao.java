@@ -18,7 +18,7 @@ import org.hibernate.Session;
 @Singleton
 public class GenericDao {
 
-    @PersistenceContext(name = "pu_gerenciador_projetos")
+    @PersistenceContext(name = "gerenciador_projetos_pu")
     private EntityManager entityManager;
     private Session session;
 
