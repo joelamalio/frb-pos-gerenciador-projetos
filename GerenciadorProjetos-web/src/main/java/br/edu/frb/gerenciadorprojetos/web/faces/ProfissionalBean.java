@@ -25,7 +25,6 @@ public class ProfissionalBean implements Serializable {
 
     private Profissional profissional;
     private List<Profissional> listaProfissional;
-    private Integer tamanhoListaProfissional;
     @EJB()
     private ProfissionalService service;
     @EJB()
@@ -52,7 +51,6 @@ public class ProfissionalBean implements Serializable {
     public String initPesquisa() {
         this.profissional = new Profissional();
         this.listaProfissional = new ArrayList<Profissional>();
-        this.tamanhoListaProfissional = 0;
         return "listaProfissional";
     }
 
@@ -67,10 +65,6 @@ public class ProfissionalBean implements Serializable {
 
     public List<Profissional> getListaProfissional() {
         return listaProfissional;
-    }
-
-    public Integer getTamanhoListaProfissional() {
-        return tamanhoListaProfissional;
     }
 
     public void setProfissional(Profissional profissional) {
