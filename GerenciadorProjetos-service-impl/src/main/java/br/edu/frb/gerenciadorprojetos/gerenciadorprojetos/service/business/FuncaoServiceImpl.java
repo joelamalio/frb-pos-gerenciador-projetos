@@ -18,9 +18,15 @@ public class FuncaoServiceImpl implements FuncaoService {
     @EJB
     GenericDao dao;
 
-    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     @Override
     public List<Funcao> listar() {
         return dao.listarTodos(Funcao.class);
+    }
+
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    @Override
+    public void salvar(Funcao funcao) {
+        dao.salvarOuAtualizar(funcao);
     }
 }

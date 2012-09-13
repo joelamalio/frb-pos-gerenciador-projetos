@@ -12,4 +12,6 @@ import javax.ejb.Remote;
 public interface FuncaoService extends Serializable {
 
     List<Funcao> listar();
+
+    void salvar(Funcao funcao);
 }
