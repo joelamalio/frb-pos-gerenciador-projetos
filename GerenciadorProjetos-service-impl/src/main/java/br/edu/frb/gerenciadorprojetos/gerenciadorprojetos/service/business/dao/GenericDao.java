@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaQuery;
 import org.apache.derby.jdbc.ClientDriver;
 
 /**
@@ -48,8 +49,9 @@ public class GenericDao {
     }
 
     public List listarTodos(Class<?> clazz) {
-        Query query = getSession().createQuery("SELECT e FROM " + clazz.getSimpleName() + " e");
-        return query.getResultList();
+        CriteriaQuery query = getSession().getCriteriaBuilder().createQuery(clazz);
+        query.select(query.from(clazz));
+        return getSession().createQuery(query).getResultList();
     }
 
     public void remover(Object objeto) {
