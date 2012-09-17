@@ -17,8 +17,6 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <hibernate.core.version>3.6.10.Final</hibernate.core.version>   
-        <hibernate.validator.version>4.2.0.Final</hibernate.validator.version>
-        <netbeans.hint.deploy.server>gfv3ee6</netbeans.hint.deploy.server>
     </properties>
     
     <dependencies>
@@ -31,7 +29,6 @@
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>${version.javaee}</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>br.edu.frb.gerenciadorprojetos</groupId>
@@ -52,12 +49,12 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate.validator.version}</version>
+            <version>4.2.0.Final</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.0-api</artifactId>
-            <version>1.0.0.Final</version>
+            <version>1.0.1.Final</version>
         </dependency>
         <!-- Transacao -->
         <dependency>
@@ -69,6 +66,12 @@
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
             <version>1</version>
+        </dependency>
+        <!-- Banco -->
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derbyclient</artifactId>
+            <version>10.9.1.0</version>
         </dependency>
     </dependencies>
 

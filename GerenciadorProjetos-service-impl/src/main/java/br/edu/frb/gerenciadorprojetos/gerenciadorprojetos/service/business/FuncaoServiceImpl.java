@@ -27,6 +27,6 @@ public class FuncaoServiceImpl implements FuncaoService {
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     @Override
     public void salvar(Funcao funcao) {
-        dao.salvarOuAtualizar(funcao);
+        dao.salvar(funcao);
     }
 }

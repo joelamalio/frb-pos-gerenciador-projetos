@@ -36,12 +36,6 @@
     </build>
     <repositories>
         <repository>
-            <url>http://download.eclipse.org/rt/eclipselink/maven.repo/</url>
-            <id>eclipselink</id>
-            <layout>default</layout>
-            <name>Repository for library Library[eclipselink]</name>
-        </repository>
-        <repository>
             <url>http://download.java.net/maven/2/</url>
             <id>javaee-api-6.0</id>
             <layout>default</layout>
@@ -61,35 +55,9 @@
             <version>${hibernate.core.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>jsr250-api</artifactId>
-            <version>1.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.transaction</groupId>
-            <artifactId>jta</artifactId>
-            <version>1.0.1B</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate</artifactId>
-            <version>3.2.5.ga</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>ejb3-persistence</artifactId>
-            <version>1.0.1.GA</version>
-        </dependency>
-        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>3.3.2.GA</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.sql</groupId>
-            <artifactId>jdbc-stdext</artifactId>
-            <version>2.0</version>
+            <version>${hibernate.core.version}</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>

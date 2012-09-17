@@ -27,6 +27,6 @@ public class ProfissionalServiceImpl implements ProfissionalService {
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     @Override
     public void salvar(Profissional profissional) {
-        dao.salvarOuAtualizar(profissional);
+        dao.salvar(profissional);
     }
 }

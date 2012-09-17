@@ -1,16 +1,17 @@
 package br.edu.frb.gerenciadorprojetos.gerenciadorprojetos.service.business.dao;
 
 import java.io.Serializable;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
+import javax.persistence.*;
+import org.apache.derby.jdbc.ClientDriver;
 
 /**
  * @author antoniojunior87
@@ -18,45 +19,42 @@ import org.hibernate.Session;
 @Singleton
 public class GenericDao {
 
-    @PersistenceContext(name = "gerenciador_projetos_pu")
-    private EntityManager entityManager;
-    private Session session;
+    @PersistenceUnit(name = "gerenciador_projetos_pu")
+    private EntityManagerFactory session;
 
-    public void salvar(Object objeto) {
-        getSession().save(objeto);
-        getSession().flush();
+    @PostConstruct
+    public void init() {
+        try {
+            DriverManager.registerDriver(new ClientDriver());
+        } catch (SQLException ex) {
+            Logger.getLogger(GenericDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    public void salvarOuAtualizar(Object objeto) {
-        getSession().saveOrUpdate(objeto);
+    public void salvar(Object objeto) {
+        getSession().persist(objeto);
         getSession().flush();
     }
 
     public void salvarEmLote(List<Object> pLista) {
         for (Object item : pLista) {
-            getSession().saveOrUpdate(item);
+            getSession().persist(item);
         }
         getSession().flush();
     }
 
     public <T> T carregarLoad(Class<T> clazz, Serializable id) {
-        Session lSession = (Session) getEntityManager().getDelegate();
-        return (T) lSession.load(clazz, id);
-    }
-
-    public <T> T carregarGet(Class<T> clazz, Serializable id) {
-        Session lsession = (Session) getEntityManager().getDelegate();
-        return (T) lsession.get(clazz, id);
+        return (T) getSession().find(clazz, id);
     }
 
     public List listarTodos(Class<?> clazz) {
-        Criteria criteria = getSession().createCriteria(clazz);
-        return criteria.list();
+        Query query = getSession().createQuery("SELECT e FROM " + clazz.getSimpleName() + " e");
+        return query.getResultList();
     }
 
     public void remover(Object objeto) {
-        objeto = entityManager.merge(objeto);
-        getSession().delete(objeto);
+        objeto = getSession().merge(objeto);
+        getSession().remove(objeto);
     }
 
     public List<Object> buscarPorNamedQuery(String namedQuery) {
@@ -65,7 +63,7 @@ public class GenericDao {
 
     public List<Object> buscarPorNamedQuery(String namedQuery, Map<String, Object> parametros) {
         if (parametros == null) {
-            return getEntityManager().createNamedQuery(namedQuery).getResultList();
+            return getSession().createQuery(namedQuery).getResultList();
         } else {
             Query query = createQuery(namedQuery, parametros);
             try {
@@ -79,7 +77,7 @@ public class GenericDao {
 
     public void executarNamedQuery(String namedQuery, Map<String, Object> parametros) {
         if (parametros == null) {
-            getEntityManager().createNamedQuery(namedQuery);
+            getSession().createQuery(namedQuery);
         } else {
             Query query = createQuery(namedQuery, parametros);
             query.executeUpdate();
@@ -87,7 +85,7 @@ public class GenericDao {
     }
 
     public List<Object> buscarPorNativeQuery(String sql) {
-        return entityManager.createNativeQuery(sql).getResultList();
+        return getSession().createNativeQuery(sql).getResultList();
     }
 
     public Object buscarEntidadePorNamedQuery(String namedQuery, Map<String, Object> parametros) {
@@ -102,7 +100,7 @@ public class GenericDao {
 
     private Query createQuery(String namedQuery, Map<String, Object> parametros) {
         Iterator<String> it = parametros.keySet().iterator();
-        Query query = entityManager.createNamedQuery(namedQuery);
+        Query query = getSession().createNamedQuery(namedQuery);
         while (it.hasNext()) {
             String parametroIdentifier = it.next();
             query.setParameter(parametroIdentifier, parametros.get(parametroIdentifier));
@@ -110,18 +108,7 @@ public class GenericDao {
         return query;
     }
 
-    private Session getSession() {
-        if (session == null || !session.isOpen()) {
-            if (entityManager.getDelegate() instanceof org.hibernate.ejb.HibernateEntityManager) {
-                session = ((org.hibernate.ejb.HibernateEntityManager) entityManager.getDelegate()).getSession();
-            } else {
-                session = (org.hibernate.Session) entityManager.getDelegate();
-            }
-        }
-        return session;
-    }
-
-    private EntityManager getEntityManager() {
-        return entityManager;
+    private EntityManager getSession() {
+        return session.createEntityManager();
     }
 }
