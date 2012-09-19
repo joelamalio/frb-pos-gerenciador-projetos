@@ -56,7 +56,7 @@ public class ProfissionalBean implements Serializable {
     }
 
     public void pesquisar() {
-        listaProfissional = profissionalService.listar();
+        listaProfissional = profissionalService.listar(profissional);
     }
 
     public String initPesquisa() {

@@ -63,7 +63,7 @@ public class GenericDao {
         return buscarPorNamedQuery(namedQuery, null);
     }
 
-    public List<Object> buscarPorNamedQuery(String namedQuery, Map<String, Object> parametros) {
+    public List buscarPorNamedQuery(String namedQuery, Map<String, Object> parametros) {
         if (parametros == null) {
             return getSession().createQuery(namedQuery).getResultList();
         } else {
