@@ -25,15 +25,23 @@ public class LoginServiceImpl implements LoginService {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     @Override
     public Usuario logar(Usuario usuario) {        
-        List<Object> usuarios = (List<Object>)dao.buscarPorNativeQuery(this.retornarBuscaUsuario(usuario));
+        List<Object> usuarios = dao.buscarPorNativeQuery(this.retornarBuscaUsuario(usuario), Usuario.class);
         
         if (!usuarios.isEmpty()) {
+            //Usuario usuarioLogado = new Usuario();
+//            usuarioLogado.setId((Object[](usuarios.get(0)))[0]);
             return (Usuario)usuarios.get(0);
         }else return null;
         
+    }
+    
+    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
+    @Override
+    public void salvarUsuario(Usuario usuario) {        
+        dao.salvar(usuario);
     }
     
     private String retornarBuscaUsuario(Usuario usuario){

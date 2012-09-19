@@ -86,8 +86,8 @@ public class GenericDao {
         }
     }
 
-    public List<Object> buscarPorNativeQuery(String sql) {
-        return getSession().createNativeQuery(sql).getResultList();
+    public List<Object> buscarPorNativeQuery(String sql, Class<?> clazz) {
+        return getSession().createNativeQuery(sql, clazz).getResultList();
     }
 
     public Object buscarEntidadePorNamedQuery(String namedQuery, Map<String, Object> parametros) {

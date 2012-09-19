@@ -30,11 +30,7 @@
             <artifactId>javaee-api</artifactId>
             <version>${version.javaee}</version>
         </dependency>
-        <dependency>
-            <groupId>br.edu.frb.gerenciadorprojetos</groupId>
-            <artifactId>GerenciadorProjetos-service</artifactId>
-            <version>${version.gerenciador.projetos}</version>
-        </dependency>
+        
         <!-- Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
