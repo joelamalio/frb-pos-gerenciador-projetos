@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -34,6 +35,13 @@ public class ProfissionalBean implements Serializable {
     public ProfissionalBean() {
     }
 
+    @PostConstruct
+    public void init() {
+        profissional = new Profissional();
+        profissional.setUsuario(new Usuario());
+        pesquisar();
+    }
+
     public String salvar() {
         profissional.setUsuario(null);
         profissional.setTarefas(null);
@@ -49,7 +57,7 @@ public class ProfissionalBean implements Serializable {
     }
 
     public void pesquisar() {
-        listaProfissional = profissionalService.listar();
+        listaProfissional = profissionalService.listar(profissional);
     }
 
     public String initPesquisa() {

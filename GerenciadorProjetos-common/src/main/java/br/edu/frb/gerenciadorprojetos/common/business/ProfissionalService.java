@@ -12,6 +12,8 @@ import javax.ejb.Remote;
 public interface ProfissionalService extends Serializable {
 
     List<Profissional> listar();
+    
+    List<Profissional> listar(Profissional profissional);
 
     void salvar(Profissional profissional);
 }
