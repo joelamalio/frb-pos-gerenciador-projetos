@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -32,6 +33,12 @@ public class ProfissionalBean implements Serializable {
     private FuncaoService funcaoService;
 
     public ProfissionalBean() {
+    }
+
+    @PostConstruct
+    public void init() {
+        profissional = new Profissional();
+        profissional.setUsuario(new Usuario());
     }
 
     public String salvar() {
