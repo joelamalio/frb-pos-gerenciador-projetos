@@ -8,7 +8,6 @@ import javax.persistence.*;
  * @author joelamalio
  */
 @Entity(name = "FUNCAO")
-@Table(schema = "gerenciador")
 public class Funcao implements Serializable {
 
     @Id

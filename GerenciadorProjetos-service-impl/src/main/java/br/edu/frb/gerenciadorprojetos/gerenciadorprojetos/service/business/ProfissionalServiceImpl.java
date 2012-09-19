@@ -7,14 +7,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
 /**
  * @author antoniojunior87
  */
-@Stateless
+@Stateful
 public class ProfissionalServiceImpl implements ProfissionalService {
 
     @EJB

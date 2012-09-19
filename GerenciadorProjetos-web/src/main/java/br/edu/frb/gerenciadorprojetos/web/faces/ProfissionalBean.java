@@ -39,6 +39,7 @@ public class ProfissionalBean implements Serializable {
     public void init() {
         profissional = new Profissional();
         profissional.setUsuario(new Usuario());
+        pesquisar();
     }
 
     public String salvar() {
