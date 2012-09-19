@@ -25,9 +25,9 @@ public class ProfissionalBean implements Serializable {
 
     private Profissional profissional;
     private List<Profissional> listaProfissional;
-    @EJB()
-    private ProfissionalService service;
-    @EJB()
+    @EJB
+    private ProfissionalService profissionalService;
+    @EJB
     private FuncaoService funcaoService;
 
     public ProfissionalBean() {
@@ -35,7 +35,7 @@ public class ProfissionalBean implements Serializable {
     }
 
     public String salvar() {
-        service.salvar(profissional);
+        profissionalService.salvar(profissional);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Profissional Salvo"));
         return "listaProfissional";
     }
@@ -45,7 +45,7 @@ public class ProfissionalBean implements Serializable {
     }
 
     public void pesquisar() {
-        listaProfissional = service.listar();
+        listaProfissional = profissionalService.listar();
     }
 
     public String initPesquisa() {

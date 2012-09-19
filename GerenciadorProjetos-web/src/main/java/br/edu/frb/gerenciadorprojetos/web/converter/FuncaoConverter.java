@@ -1,8 +1,6 @@
 package br.edu.frb.gerenciadorprojetos.web.converter;
 
 import br.edu.frb.gerenciadorprojetos.common.entity.Funcao;
-import java.lang.reflect.Field;
-import java.util.Collection;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;

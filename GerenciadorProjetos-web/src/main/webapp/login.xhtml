@@ -16,7 +16,7 @@
             <ui:define name="header" ></ui:define>
             <ui:define name="content">
                 <div id="container">
-                    <h:form id="form" prependId="true">
+                    <h:form id="formLogin" prependId="true">
                         <p:growl autoUpdate="true" showDetail="true" id="messages"/>
                         <h:panelGrid>
                             <p:commandButton action="#{loginBean.novoUsuario}" value="Cadastrar Usuário" update="@all" immediate="true"/>
