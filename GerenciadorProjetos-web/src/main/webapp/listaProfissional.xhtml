@@ -24,9 +24,9 @@
                                     <p:inputText value="#{profissionalBean.profissional.nome}" />
                                 </p:column>
                                 <p:columnGroup>
-                                    <p:commandButton action="#{profissionalBean.pesquisar}" value="Pesquisar" update="@all" immediate="true"/>
-                                    <p:commandButton action="#{profissionalBean.initPesquisa}" value="Limpar" update="formProfissional" immediate="true"/>
-                                    <p:commandButton action="#{profissionalBean.novo}" value="Novo" process="@this" update="@none" immediate="true" />
+                                    <p:commandButton action="#{profissionalBean.pesquisar}" value="Pesquisar" ajax="false" immediate="true"/>
+                                    <p:commandButton action="#{profissionalBean.initPesquisa}" value="Limpar" ajax="false" update="formProfissional" immediate="true"/>
+                                    <p:commandButton action="#{profissionalBean.novo}" value="Novo" process="@this" update="@none" immediate="true" ajax="false" />
                                 </p:columnGroup>
                             </h:panelGrid>  
                         </p:fieldset>

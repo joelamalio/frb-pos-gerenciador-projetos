@@ -30,7 +30,7 @@
                         <p:selectOneMenu  value="#{projetoBean.projeto.gerente}">
                             <f:selectItems value="#{projetoBean.listaProfissional}"/>
                         </p:selectOneMenu>
-                        <p:commandButton action="#{projetoBean.salvar}" value="Salvar"  />
+                        <p:commandButton action="#{projetoBean.salvar}" value="Salvar" ajax="false" />
                     </h:panelGrid>
                 </h:form>
             </ui:define>

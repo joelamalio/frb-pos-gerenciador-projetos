@@ -24,7 +24,7 @@
                                 </p:column>
                                 <p:column>
                                 <p:commandButton action="#{projetoBean.initPesquisa}" value="Limpar" update="formProjeto" immediate="true"/>
-                                <p:commandButton action="#{projetoBean.pesquisar}" value="Pesquisar" update="resultados" immediate="true"/>
+                                <p:commandButton action="#{projetoBean.pesquisar}" value="Pesquisar" update="resultados" immediate="true" ajax="false"/>
                                 </p:column>
                             </h:panelGrid>  
                         </p:fieldset>

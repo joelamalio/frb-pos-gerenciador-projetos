@@ -14,11 +14,11 @@
                         <h:form id="formHeader">
                             <p:tabMenu activeIndex="0">  
                                 <p:menuitem outcome="index" value="Home" icon="ui-icon-star"/>  
-                                <p:menuitem action="#{profissionalBean.initPesquisa}" value="Profissional" icon="ui-icon-star"/>  
-                                <p:menuitem action="#{projetoBean.initPesquisa}" value="Projeto" icon="ui-icon-search" />  
-                                <p:menuitem outcome="listaProjeto" value="Projeto" icon="ui-icon-document"/>  
-                                <p:menuitem outcome="listaProjeto" value="Projeto" icon="ui-icon-wrench"/>  
-                                <p:menuitem outcome="listaProjeto" value="Projeto" icon="ui-icon-person" />  
+                                <p:menuitem action="#{profissionalBean.initPesquisa}" value="Profissional" icon="ui-icon-star" ajax="false" />  
+                                <p:menuitem action="#{projetoBean.initPesquisa}" value="Projeto" icon="ui-icon-search" ajax="false" />  
+                                <p:menuitem outcome="listaProjeto" value="Projeto" icon="ui-icon-document" ajax="false" />  
+                                <p:menuitem outcome="listaProjeto" value="Projeto" icon="ui-icon-wrench" ajax="false" />  
+                                <p:menuitem outcome="listaProjeto" value="Projeto" icon="ui-icon-person" ajax="false" />  
                             </p:tabMenu>  
                         </h:form>
                     </div>
