@@ -11,4 +11,6 @@ public interface LoginService {
     void sair(Usuario usuario);
     
     Usuario logar(Usuario usuario);
+    
+    public void salvarUsuario(Usuario usuario);
 }
