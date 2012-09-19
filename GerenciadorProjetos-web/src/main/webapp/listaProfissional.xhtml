@@ -11,7 +11,7 @@
             <ui:define name="content">
 
                 <h:form id="formProfissional">
-                    <p:messages />
+                    <p:growl autoUpdate="true" showDetail="true" id="messages"/>
                     <h:panelGrid>
                         <p:breadCrumb>  
                             <p:menuitem value="Home" url="#" />  
@@ -44,10 +44,10 @@
                                             <h:outputText value="#{profissional.dataNascimento}" />
                                         </p:column>
                                         <p:column sortBy="#{profissional.grauInstrucao}" headerText="Grau de Instrução">
-                                            <h:outputText value="#{profissional.grauInstrucao}" />
+                                            <h:outputText value="#{profissional.grauInstrucao.descricao}" />
                                         </p:column>
                                         <p:column sortBy="#{profissional.funcao}" headerText="Função">
-                                            <h:outputText value="#{profissional.funcao}" />
+                                            <h:outputText value="#{profissional.funcao.descricao}" />
                                         </p:column>
                                         <p:column sortBy="#{profissional.dataAdmissao}" headerText="Data de Admissão">
                                             <h:outputText value="#{profissional.dataAdmissao}" />

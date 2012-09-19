@@ -5,6 +5,7 @@ import br.edu.frb.gerenciadorprojetos.common.business.ProfissionalService;
 import br.edu.frb.gerenciadorprojetos.common.entity.Funcao;
 import br.edu.frb.gerenciadorprojetos.common.entity.GrauInstrucao;
 import br.edu.frb.gerenciadorprojetos.common.entity.Profissional;
+import br.edu.frb.gerenciadorprojetos.common.entity.Usuario;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,16 +32,19 @@ public class ProfissionalBean implements Serializable {
     private FuncaoService funcaoService;
 
     public ProfissionalBean() {
-        profissional = new Profissional();
     }
 
     public String salvar() {
+        profissional.setUsuario(null);
+        profissional.setTarefas(null);
         profissionalService.salvar(profissional);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Profissional Salvo"));
-        return "listaProfissional";
+        return initPesquisa();
     }
 
     public String novo() {
+        profissional = new Profissional();
+        profissional.setUsuario(new Usuario());
         return "cadastroProfissional";
     }
 

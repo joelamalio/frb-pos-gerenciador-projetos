@@ -9,7 +9,7 @@
 
         <ui:composition template="template/template.xhtml">
             <ui:define name="content">
-                <h:form>
+                <h:form id="formCadastro">
                     <p:growl autoUpdate="true" showDetail="true" id="messages"/>
                     <h:panelGrid>
                         <h:panelGroup>
@@ -28,15 +28,15 @@
                         <p:calendar value="#{profissionalBean.profissional.dataNascimento}" />
                         <h:outputText value="Grau de Instrução:"/>
                         <p:selectOneMenu  value="#{profissionalBean.profissional.grauInstrucao}">
-                            <f:selectItems value="#{profissionalBean.listaGrauInstrucao}" var="grauInstrucao" itemLabel="#{grauInstrucao.descricao}" itemValue="#{grauInstrucao.id}"/>
+                            <f:selectItems value="#{profissionalBean.listaGrauInstrucao}" var="grauInstrucao" itemLabel="#{grauInstrucao.descricao}" itemValue="#{grauInstrucao.descricao}"/>
                         </p:selectOneMenu>
                         <h:outputText value="Função:"/>
-                        <p:selectOneMenu  value="#{profissionalBean.profissional.funcao}" converter="FuncaoConverter">
-                            <f:selectItems value="#{profissionalBean.listaFuncao}" var="funcao" itemLabel="#{funcao.descricao}" itemValue="#{funcao}"/>
+                        <p:selectOneMenu value="#{profissionalBean.profissional.funcao}" converter="FuncaoConverter">
+                            <f:selectItems value="#{profissionalBean.listaFuncao}" var="funcao" itemLabel="#{funcao.descricao}" itemValue="#{funcao.id}"/>
                         </p:selectOneMenu>
                         <h:outputText value="Data Admissão:"/>
                         <p:calendar value="#{profissionalBean.profissional.dataAdmissao}" />
-                        <p:commandButton action="#{profissionalBean.salvar}" value="Salvar" update="@form" immediate="true"/>
+                        <p:commandButton action="#{profissionalBean.salvar}" value="Salvar"/>
                     </h:panelGrid>
                 </h:form>
             </ui:define>

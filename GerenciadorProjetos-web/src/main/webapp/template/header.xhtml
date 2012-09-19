@@ -25,7 +25,7 @@
                     <div id="divUsuario">
                         <h:form id="formLogout"> 
                             <p>
-                                Usuário -
+                                <h:outputLabel value="#{loginBean.usuario.email}"/> -
                                 <h:commandLink value="Sair" action="#{loginBean.sair}"/>
                             </p>
                         </h:form>
