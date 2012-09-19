@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Entity(name = "PROFISSIONAL")
 @Table(name = "PROFISSIONAL", schema = "GERENCIADOR")
 @NamedQueries({
-    @NamedQuery(name = "Profissional.findByNome", query = "SELECT p FROM Profissional p WHERE p.nome = :nome")})
+    @NamedQuery(name = "Profissional.findByNome", query = "SELECT p FROM PROFISSIONAL p WHERE p.nome LIKE :nome")})
 public class Profissional implements Serializable {
 
     @Id

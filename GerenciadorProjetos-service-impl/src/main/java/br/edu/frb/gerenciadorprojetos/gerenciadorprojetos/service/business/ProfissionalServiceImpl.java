@@ -34,7 +34,7 @@ public class ProfissionalServiceImpl implements ProfissionalService {
         }
 
         Map<String, Object> param = new HashMap<String, Object>();
-        param.put("nome", profissional.getNome());
+        param.put("nome", "%" + profissional.getNome() + "%");
         return dao.buscarPorNamedQuery("Profissional.findByNome", param);
     }
 
