@@ -16,19 +16,19 @@
                             <h:outputText value="Cadastro de Projeto"/>
                             <h:outputText/>
                         </h:panelGroup>
-                        <h:outputText value="Nome:"/>
-                        <p:inputText value="#{projetoBean.projeto.nome}" />
                         <h:outputText value="Código:"/>
                         <p:inputText value="#{projetoBean.projeto.codigo}" />
+                        <h:outputText value="Nome:"/>
+                        <p:inputText value="#{projetoBean.projeto.nome}" />
                         <h:outputText value="Data Abertura:"/>
                         <p:calendar value="#{projetoBean.projeto.dataAbertura}" />
                         <h:outputText value="Data Prevista Término:"/>
-                        <p:calendar value="#{projetoBean.projeto.dataTermino}" />
+                        <p:calendar value="#{projetoBean.projeto.dataPrevisaoTermino}" />
                         <h:outputText value="Data Fechamento:"/>
                         <p:calendar value="#{projetoBean.projeto.dataFechamento}" />
                         <h:outputText value="Gerente:"/>
-                        <p:selectOneMenu  value="#{projetoBean.projeto.gerente}">
-                            <f:selectItems value="#{projetoBean.listaProfissional}"/>
+                        <p:selectOneMenu  value="#{projetoBean.projeto.gerente}" converter="ProfissionalConverter">
+                            <f:selectItems value="#{projetoBean.listaProfissional}" var="profissional" itemLabel="#{profissional.nome}" itemValue="#{profissional.id}"/>
                         </p:selectOneMenu>
                         <p:commandButton action="#{projetoBean.salvar}" value="Salvar" ajax="false" />
                     </h:panelGrid>

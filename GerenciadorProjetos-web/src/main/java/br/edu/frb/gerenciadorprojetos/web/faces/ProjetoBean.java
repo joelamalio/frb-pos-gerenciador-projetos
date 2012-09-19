@@ -1,12 +1,17 @@
 package br.edu.frb.gerenciadorprojetos.web.faces;
 
+import br.edu.frb.gerenciadorprojetos.common.business.ProfissionalService;
+import br.edu.frb.gerenciadorprojetos.common.business.ProjetoService;
 import br.edu.frb.gerenciadorprojetos.common.entity.Profissional;
 import br.edu.frb.gerenciadorprojetos.common.entity.Projeto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  * @author antoniojunior87
@@ -16,21 +21,31 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class ProjetoBean implements Serializable {
 
+    @EJB
+    private ProjetoService projetoService;
+    @EJB
+    private ProfissionalService profissionalService;
+    
     private Projeto projeto;
     private List<Projeto> listaProjeto;
     private Integer tamanhoListaProjeto;
 
     public ProjetoBean() {
     }
+    
+    public String abrirProjeto() {
+        projeto = new Projeto();
+        return "cadastroProjeto";
+    }
 
-    public void salvar() {
+    public String salvar() {
+        projetoService.salvar(projeto);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Projeto aberto com sucesso!"));
+        return initPesquisa();
     }
 
     public void pesquisar() {
-        listaProjeto = new ArrayList<Projeto>();
-        listaProjeto.add(new Projeto("Projeto 1"));
-        listaProjeto.add(new Projeto("Projeto 2"));
-        listaProjeto.add(new Projeto("Projeto 3"));
+        listaProjeto = projetoService.listar();
         this.tamanhoListaProjeto = this.listaProjeto.size();
     }
     
@@ -42,11 +57,7 @@ public class ProjetoBean implements Serializable {
     }
 
     public List<Profissional> getListaProfissional() {
-        List<Profissional> lista = new ArrayList<Profissional>();
-        lista.add(new Profissional("João"));
-        lista.add(new Profissional("Maria"));
-        lista.add(new Profissional("Jesus"));
-        return lista;
+        return profissionalService.listar();
     }
 
     public Projeto getProjeto() {

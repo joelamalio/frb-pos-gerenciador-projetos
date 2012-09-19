@@ -25,6 +25,7 @@
                                 <p:column>
                                 <p:commandButton action="#{projetoBean.initPesquisa}" value="Limpar" update="formProjeto" immediate="true"/>
                                 <p:commandButton action="#{projetoBean.pesquisar}" value="Pesquisar" update="resultados" immediate="true" ajax="false"/>
+                                <p:commandButton action="#{projetoBean.abrirProjeto}" value="Abrir Projeto" process="@this" update="@none" immediate="true" ajax="false" />
                                 </p:column>
                             </h:panelGrid>  
                         </p:fieldset>
@@ -48,7 +49,7 @@
                                             <h:outputText value="#{projeto.dataFechamento}" />
                                         </p:column>
                                         <p:column sortBy="#{projeto.gerente}" headerText="Gerente">
-                                            <h:outputText value="#{projeto.gerente}" />
+                                            <h:outputText value="#{projeto.gerente.nome}" />
                                         </p:column>
                                     </p:dataTable>
                                 </h:panelGrid>  

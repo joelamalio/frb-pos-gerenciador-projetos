@@ -31,11 +31,10 @@ public class LoginServiceImpl implements LoginService {
         List<Object> usuarios = dao.buscarPorNativeQuery(this.retornarBuscaUsuario(usuario), Usuario.class);
         
         if (!usuarios.isEmpty()) {
-            //Usuario usuarioLogado = new Usuario();
-//            usuarioLogado.setId((Object[](usuarios.get(0)))[0]);
             return (Usuario)usuarios.get(0);
-        }else return null;
-        
+        }else {
+            return null;
+        }
     }
     
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
