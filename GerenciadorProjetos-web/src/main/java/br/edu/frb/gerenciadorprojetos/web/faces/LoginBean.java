@@ -38,6 +38,13 @@ public class LoginBean implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Usuário não existe!"));
         return "login";
     }
+    
+    public String salvarUsuario() {
+        service.salvarUsuario(usuario);
+        usuario = new Usuario();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Usuário cadastrado com sucesso!"));
+        return "login";
+    }
 
     public Usuario getUsuario() {
         return usuario;
@@ -45,5 +52,9 @@ public class LoginBean implements Serializable {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+    
+    public String novoUsuario() {
+        return "cadastroUsuario";
     }
 }

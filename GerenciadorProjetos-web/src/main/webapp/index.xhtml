@@ -7,7 +7,9 @@
     <h:body>
         <ui:composition template="template/template.xhtml">
             <ui:define name="content">
-                USUÁRIO, seja bem vindo(a).
+                <h:form>
+                    USUÁRIO, <h:outputLabel value="#{loginBean.usuario.email}"/> seja bem vindo(a).
+                </h:form>
             </ui:define>
         </ui:composition>
     </h:body>
