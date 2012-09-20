@@ -8,6 +8,9 @@ import javax.persistence.*;
  * @author joelamalio
  */
 @Entity(name = "FUNCAO")
+@NamedQueries({
+    @NamedQuery(name = "Funcao.findByDescricao",
+    query = "SELECT f FROM FUNCAO f WHERE f.descricao LIKE :descricao ORDER BY f.descricao ASC")})
 public class Funcao implements Serializable {
 
     @Id

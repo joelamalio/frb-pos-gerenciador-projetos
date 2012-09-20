@@ -13,5 +13,7 @@ public interface FuncaoService extends Serializable {
 
     List<Funcao> listar();
 
+    List<Funcao> listar(Funcao funcao);
+
     void salvar(Funcao funcao);
 }

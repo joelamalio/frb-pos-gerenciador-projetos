@@ -2,10 +2,8 @@ package br.edu.frb.gerenciadorprojetos.web.faces;
 
 import br.edu.frb.gerenciadorprojetos.common.business.FuncaoService;
 import br.edu.frb.gerenciadorprojetos.common.business.ProfissionalService;
-import br.edu.frb.gerenciadorprojetos.common.entity.Funcao;
-import br.edu.frb.gerenciadorprojetos.common.entity.GrauInstrucao;
-import br.edu.frb.gerenciadorprojetos.common.entity.Profissional;
-import br.edu.frb.gerenciadorprojetos.common.entity.Usuario;
+import br.edu.frb.gerenciadorprojetos.common.business.ProjetoService;
+import br.edu.frb.gerenciadorprojetos.common.entity.*;
 import br.edu.frb.gerenciadorprojetos.gerenciadorprojetos.service.business.LoginService;
 import java.io.Serializable;
 import java.util.Date;
@@ -27,12 +25,15 @@ public class CargaBean implements Serializable {
     private LoginService loginService;
     @EJB
     private ProfissionalService profissionalService;
+    @EJB
+    private ProjetoService projetoService;
     private boolean iniciado = false;
     
     public String prepararBanco() {
         this.inserirFuncao();
         this.inserirUsuario();
         this.inserirProfissional();
+        this.inserirProjeto();
         this.iniciado = true;
         return this.redirecionarParaLogin();
     }
@@ -83,11 +84,35 @@ public class CargaBean implements Serializable {
         profissional2.setFuncao(funcoes.get(2));
         profissional2.setUsuario(usuario2);
         profissional2.setNome("Usuário 2");
-        profissional2.setGrauInstrucao(GrauInstrucao.TECNICO);
+        profissional2.setGrauInstrucao(GrauInstrucao.SUPERIOR);
         profissional2.setCpf("999.999.999-22");
         profissional2.setDataNascimento(new Date(92, 1, 1));
         profissional2.setDataAdmissao(new Date(112, 2, 22));
         this.profissionalService.salvar(profissional2);
+        final Usuario usuarioGerente = new Usuario();
+        usuarioGerente.setEmail("gerente1@frb.edu.br");
+        usuarioGerente.setSenha("gerente1");
+        this.loginService.salvarUsuario(usuarioGerente);
+        final Profissional gerente1 = new Profissional();
+        gerente1.setFuncao(this.funcaoService.listar(new Funcao("GERENTE")).get(0));
+        gerente1.setUsuario(usuarioGerente);
+        gerente1.setNome("Gerente 1");
+        gerente1.setGrauInstrucao(GrauInstrucao.MESTRADO);
+        gerente1.setCpf("999.999.999-99");
+        gerente1.setDataNascimento(new Date(82, 2, 2));
+        gerente1.setDataAdmissao(new Date(100, 2, 22));
+        this.profissionalService.salvar(gerente1);
+    }
+    
+    private void inserirProjeto() {
+        final Projeto projeto1 = new Projeto();
+        projeto1.setCodigo("PROJ-1");
+        projeto1.setNome("PROJETO 1");
+        projeto1.setDataAbertura(new Date(112, 6, 1));
+        projeto1.setDataPrevisaoTermino(new Date(112, 10, 1));
+        projeto1.setDataFechamento(new Date(112, 9, 18));
+        projeto1.setGerente(this.profissionalService.listar(new Profissional("Gerente 1")).get(0));
+        this.projetoService.salvar(projeto1);
     }
     
 }
