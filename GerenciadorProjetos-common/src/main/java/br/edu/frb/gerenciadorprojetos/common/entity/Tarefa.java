@@ -9,6 +9,11 @@ import javax.persistence.*;
  * @author joelamalio
  */
 @Entity(name = "TAREFA")
+@NamedQueries({
+    @NamedQuery(name = "Tarefa.findById",
+    query = "SELECT tare FROM TAREFA tare LEFT JOIN FETCH tare.responsavel resp LEFT JOIN FETCH tare.projeto proj WHERE tare.id = :id "),
+    @NamedQuery(name = "Tarefa.findByDescricao",
+    query = "SELECT tare FROM TAREFA tare LEFT JOIN FETCH tare.responsavel resp LEFT JOIN FETCH tare.projeto proj WHERE tare.descricao LIKE :descricao ORDER BY tare.descricao ASC ")})
 public class Tarefa implements Serializable {
 
     @Id

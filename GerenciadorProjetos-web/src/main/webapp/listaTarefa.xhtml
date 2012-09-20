@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:body>
+
+        <ui:composition template="template/template.xhtml">
+            <ui:define name="content">
+                <h:form id="formTarefaLista">
+                    <p:growl autoUpdate="true" showDetail="true" id="messages"/>
+                    <h:panelGrid>
+                        <p:breadCrumb>  
+                            <p:menuitem value="Home" url="#" />  
+                            <p:menuitem value="Tarefas" url="#" />  
+                        </p:breadCrumb>  
+                        <p:fieldset legend="Filtro" style="width: 100%">   
+                            <h:panelGrid cellpadding="5">  
+                                <p:column>
+                                    <h:outputText value="Descrição: "/>
+                                    <p:inputText value="#{tarefaBean.tarefa.descricao}" />
+                                </p:column>
+                                <p:columnGroup>
+                                    <p:commandButton action="#{tarefaBean.pesquisar}" value="Pesquisar" immediate="true" ajax="false"/>
+                                    <p:commandButton action="#{tarefaBean.initPesquisa}" value="Limpar" ajax="false" update="formTarefaLista" immediate="true"/>
+                                </p:columnGroup>
+                            </h:panelGrid>  
+                        </p:fieldset>
+                        <h:panelGroup id="resultados">
+                            <p:fieldset legend="Resultado">  
+                                <h:panelGrid cellpadding="10" >  
+                                    <p:dataTable id="listaTarefas" value="#{tarefaBean.listaTarefa}" var="tarefa" emptyMessage="Nenhum tarefa encontrada.">
+                                        <p:column sortBy="#{tarefa.descricao}" headerText="Descrição">
+                                            <h:outputText value="#{tarefa.descricao}" />
+                                        </p:column>
+                                        <p:column sortBy="#{tarefa.dataInicio}" headerText="Data de Início">
+                                            <h:outputText value="#{tarefa.dataInicio}" />
+                                        </p:column>
+                                        <p:column sortBy="#{tarefa.dataPrevisaoTermino}" headerText="Data Prevista para o Término">
+                                            <h:outputText value="#{tarefa.dataPrevisaoTermino}" />
+                                        </p:column>
+                                        <p:column sortBy="#{tarefa.dataTermino}" headerText="Data de Término">
+                                            <h:outputText value="#{tarefa.dataTermino}" />
+                                        </p:column>
+                                        <p:column sortBy="#{tarefa.responsavel}" headerText="Responsável">
+                                            <h:outputText value="#{tarefa.responsavel.nome}" />
+                                        </p:column>
+                                    </p:dataTable>
+                                </h:panelGrid>  
+                            </p:fieldset>  
+                        </h:panelGroup>
+                    </h:panelGrid>
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>
