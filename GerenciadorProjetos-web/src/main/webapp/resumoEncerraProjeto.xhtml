@@ -40,7 +40,7 @@
                                 </p:column>
                                 <p:column>
                                     <h:outputText value="Percentual de Tarefas Concluídas: "/>
-                                    <h:outputText value="0" />
+                                    <h:outputText value="#{projetoBean.projeto.percentualTarefasConcluidas} %" />
                                 </p:column>
                                 <p:column>
                                     <p:commandButton action="#{projetoBean.initPesquisa}" value="Voltar" ajax="false" />

@@ -144,6 +144,20 @@ public class Projeto implements Serializable {
         return true;
     }
 
+    public Double getPercentualTarefasConcluidas() {
+        final double quantidadeTarefas = this.tarefas.size();
+        int quantidadeTarefasConcluidas = 0;
+        for (Tarefa tarefa : this.tarefas) {
+            if (tarefa.getDataTermino() != null) {
+                quantidadeTarefasConcluidas++;
+            }
+        }
+        if (quantidadeTarefasConcluidas > 0) {
+            return (quantidadeTarefasConcluidas / quantidadeTarefas) * 100.00;
+        }
+        return 0.0;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
