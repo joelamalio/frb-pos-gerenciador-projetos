@@ -65,7 +65,7 @@ public class ProjetoBean implements Serializable {
             if (projeto.getDataAbertura().after(projeto.getDataFechamento())) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "A 'Data de Fechamento' não pode ser menor que a 'Data de Abertura'"));
             } else {
-                projetoService.salvar(projeto);
+                projetoService.atualizar(projeto);
                 return this.resumo(projeto.getId());
             }
         } else {

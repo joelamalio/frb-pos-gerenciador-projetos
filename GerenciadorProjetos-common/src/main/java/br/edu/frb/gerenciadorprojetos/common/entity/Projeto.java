@@ -1,5 +1,6 @@
 package br.edu.frb.gerenciadorprojetos.common.entity;
 
+import br.edu.frb.gerenciadorprojetos.common.util.Util;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.Date;
@@ -15,7 +16,7 @@ import javax.persistence.*;
 @NamedQueries({
     @NamedQuery(name = "Projeto.findById",
     query = "SELECT pr FROM PROJETO pr LEFT JOIN FETCH pr.gerente g LEFT JOIN FETCH pr.tarefas t WHERE pr.id = :id "),
-@NamedQuery(name = "Projeto.findByNome",
+    @NamedQuery(name = "Projeto.findByNome",
     query = "SELECT pr FROM PROJETO pr LEFT JOIN FETCH pr.gerente g LEFT JOIN FETCH pr.tarefas t WHERE pr.nome LIKE :nome ORDER BY pr.nome ASC ")})
 public class Projeto implements Serializable {
 
@@ -117,9 +118,7 @@ public class Projeto implements Serializable {
 
     public Integer getQtdDiasAtraso() {
         if (this.dataFechamento != null && this.dataPrevisaoTermino != null) {
-            if (this.dataFechamento.after(this.dataPrevisaoTermino)) {
-                return null;
-            }
+            return Util.calcularDiferencaEntre(dataPrevisaoTermino, dataFechamento);
         }
         return 0;
     }
@@ -137,7 +136,7 @@ public class Projeto implements Serializable {
         }
         this.tarefas.remove(tarefa);
     }
-    
+
     public boolean isEncerrado() {
         if (this.dataFechamento == null) {
             return false;

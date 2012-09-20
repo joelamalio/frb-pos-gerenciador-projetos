@@ -19,4 +19,6 @@ public interface ProjetoService extends Serializable {
     Projeto obterPorId(Long id);
 
     void salvar(Projeto projeto);
+    
+    void atualizar(Projeto projeto);
 }

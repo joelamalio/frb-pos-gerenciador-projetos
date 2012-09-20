@@ -19,10 +19,6 @@
                         <p:fieldset legend="Resumo do Projeto">
                             <h:panelGrid cellpadding="5">  
                                 <p:column>
-                                    <h:outputText value="Código: "/>
-                                    <h:outputText value="#{projetoBean.projeto.codigo}" />
-                                </p:column>
-                                <p:column>
                                     <h:outputText value="Nome: "/>
                                     <h:outputText value="#{projetoBean.projeto.nome}" />
                                 </p:column>
@@ -39,8 +35,12 @@
                                     <h:outputText value="#{projetoBean.projeto.dataFechamento}" />
                                 </p:column>
                                 <p:column>
-                                    <h:outputText value="Gerente: "/>
-                                    <h:outputText value="#{projetoBean.projeto.gerente}" />
+                                    <h:outputText value="Dias de Atraso: "/>
+                                    <h:outputText value="#{projetoBean.projeto.qtdDiasAtraso}" />
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="Percentual de Tarefas Concluídas: "/>
+                                    <h:outputText value="0" />
                                 </p:column>
                                 <p:column>
                                     <p:commandButton action="#{projetoBean.initPesquisa}" value="Voltar" ajax="false" />

@@ -36,6 +36,11 @@ public class GenericDao {
         getSession().persist(objeto);
         getSession().flush();
     }
+    
+    public void atualizar(Object objeto) {
+        getSession().merge(objeto);
+        getSession().flush();
+    }
 
     public void salvarEmLote(List<Object> pLista) {
         for (Object item : pLista) {

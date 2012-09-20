@@ -1,8 +1,6 @@
 package br.edu.frb.gerenciadorprojetos.gerenciadorprojetos.service.business;
 
-import br.edu.frb.gerenciadorprojetos.common.business.ProfissionalService;
 import br.edu.frb.gerenciadorprojetos.common.business.ProjetoService;
-import br.edu.frb.gerenciadorprojetos.common.entity.Profissional;
 import br.edu.frb.gerenciadorprojetos.common.entity.Projeto;
 import br.edu.frb.gerenciadorprojetos.gerenciadorprojetos.service.business.dao.GenericDao;
 import java.util.HashMap;
@@ -57,5 +55,11 @@ public class ProjetoServiceImpl implements ProjetoService {
     @Override
     public void salvar(Projeto projeto) {
         dao.salvar(projeto);
+    }
+    
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    @Override
+    public void atualizar(Projeto projeto) {
+        dao.atualizar(projeto);
     }
 }
