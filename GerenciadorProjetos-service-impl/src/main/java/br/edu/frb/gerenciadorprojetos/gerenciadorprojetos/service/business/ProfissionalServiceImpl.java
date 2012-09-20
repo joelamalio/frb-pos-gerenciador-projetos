@@ -1,6 +1,7 @@
 package br.edu.frb.gerenciadorprojetos.gerenciadorprojetos.service.business;
 
 import br.edu.frb.gerenciadorprojetos.common.business.ProfissionalService;
+import br.edu.frb.gerenciadorprojetos.common.entity.Funcao;
 import br.edu.frb.gerenciadorprojetos.common.entity.Profissional;
 import br.edu.frb.gerenciadorprojetos.gerenciadorprojetos.service.business.dao.GenericDao;
 import java.util.HashMap;
@@ -39,6 +40,21 @@ public class ProfissionalServiceImpl implements ProfissionalService {
 
         param.put("nome", "%" + nome + "%");
         return dao.buscarPorNamedQuery("Profissional.findByNome", param);
+    }
+    
+    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
+    @Override
+    public List<Profissional> listarPorFuncao(Funcao funcao) {
+        final Map<String, Object> param = new HashMap<String, Object>();
+        final String descricao;
+        if (funcao.getDescricao() == null || funcao.getDescricao().isEmpty()) {
+            descricao = "";
+        } else {
+            descricao = funcao.getDescricao().trim();
+        }
+
+        param.put("descricao", descricao);
+        return dao.buscarPorNamedQuery("Profissional.findByFuncao", param);
     }
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)

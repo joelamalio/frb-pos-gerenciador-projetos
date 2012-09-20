@@ -7,6 +7,7 @@ import br.edu.frb.gerenciadorprojetos.common.entity.Projeto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -31,6 +32,13 @@ public class ProjetoBean implements Serializable {
 
     public ProjetoBean() {
     }
+    
+    @PostConstruct
+    public void init() {
+        projeto = new Projeto();
+        projeto.setGerente(new Profissional());
+        pesquisar();
+    }
 
     public String abrirProjeto() {
         projeto = new Projeto();
@@ -38,9 +46,24 @@ public class ProjetoBean implements Serializable {
     }
 
     public String salvar() {
-        projetoService.salvar(projeto);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Projeto aberto com sucesso!"));
-        return initPesquisa();
+        if (validar()) {
+            projetoService.salvar(projeto);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Projeto aberto com sucesso!"));
+            return initPesquisa();
+        }
+        return "cadastroProjeto";
+    }
+
+    private Boolean validar() {
+        if (projeto.getDataAbertura().after(projeto.getDataPrevisaoTermino())) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "A data prevista para o término do projeto deverá ser posterior a data de abertura!"));
+            return false;
+        }
+        if (projetoService.obterProjetoPorCodigo(projeto.getCodigo()) != null) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Já existe projeto para o código informado!"));
+            return false;
+        }
+        return true;
     }
 
     public void pesquisar() {
@@ -73,11 +96,11 @@ public class ProjetoBean implements Serializable {
         }
         return null;
     }
-    
+
     public String resumo(final Long id) {
         this.projeto = this.projetoService.obterPorId(id);
         return "resumoEncerraProjeto";
-        
+
     }
 
     public List<Profissional> getListaProfissional() {

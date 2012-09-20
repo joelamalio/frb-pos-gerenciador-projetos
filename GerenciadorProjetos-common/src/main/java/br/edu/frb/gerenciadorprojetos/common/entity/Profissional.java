@@ -14,7 +14,9 @@ import javax.persistence.*;
 @Entity(name = "PROFISSIONAL")
 @NamedQueries({
     @NamedQuery(name = "Profissional.findByNome",
-    query = "SELECT p FROM PROFISSIONAL p LEFT JOIN FETCH p.funcao LEFT JOIN FETCH p.usuario f WHERE p.nome LIKE :nome ORDER BY p.nome ASC")})
+    query = "SELECT p FROM PROFISSIONAL p LEFT JOIN FETCH p.funcao LEFT JOIN FETCH p.usuario f WHERE p.nome LIKE :nome ORDER BY p.nome ASC"),
+    @NamedQuery(name = "Profissional.findByFuncao",
+    query = "SELECT p FROM PROFISSIONAL p LEFT JOIN FETCH p.funcao f LEFT JOIN FETCH p.usuario u WHERE f.descricao = :descricao ORDER BY p.nome ASC")})
 public class Profissional implements Serializable {
 
     @Id
@@ -138,7 +140,10 @@ public class Profissional implements Serializable {
 
     @Override
     public String toString() {
-        return nome;
+        if (id != null) {
+            return id.toString();
+        }
+        return "";
     }
 
     @Override
@@ -153,9 +158,6 @@ public class Profissional implements Serializable {
         if (this.id != other.id && (this.id == null || !this.id.equals(other.id))) {
             return false;
         }
-        if ((this.cpf == null) ? (other.cpf != null) : !this.cpf.equals(other.cpf)) {
-            return false;
-        }
         return true;
     }
 
@@ -163,7 +165,6 @@ public class Profissional implements Serializable {
     public int hashCode() {
         int hash = 5;
         hash = 79 * hash + (this.id != null ? this.id.hashCode() : 0);
-        hash = 79 * hash + (this.cpf != null ? this.cpf.hashCode() : 0);
         return hash;
     }
 }

@@ -11,24 +11,25 @@
         <ui:composition template="template/template.xhtml">
             <ui:define name="content">
                 <h:form>
+                    <p:growl autoUpdate="true" showDetail="true" id="messages"/>
                     <h:panelGrid>
                         <h:panelGroup>
                             <h:outputText value="Cadastro de Projeto"/>
                             <h:outputText/>
                         </h:panelGroup>
                         <h:outputText value="Código:"/>
-                        <p:inputText value="#{projetoBean.projeto.codigo}" />
+                        <p:inputText value="#{projetoBean.projeto.codigo}" required="true"  requiredMessage="Código Obrigatorio" />
                         <h:outputText value="Nome:"/>
-                        <p:inputText value="#{projetoBean.projeto.nome}" />
+                        <p:inputText value="#{projetoBean.projeto.nome}" required="true"  requiredMessage="Nome Obrigatorio" />
                         <h:outputText value="Data Abertura:"/>
-                        <p:calendar value="#{projetoBean.projeto.dataAbertura}" />
+                        <p:calendar value="#{projetoBean.projeto.dataAbertura}" required="true"  requiredMessage="Data de Abertura Obrigatoria" />
                         <h:outputText value="Data Prevista Término:"/>
-                        <p:calendar value="#{projetoBean.projeto.dataPrevisaoTermino}" />
+                        <p:calendar value="#{projetoBean.projeto.dataPrevisaoTermino}" required="true"  requiredMessage="Data Prevista Término Obrigatoria" />
                         <h:outputText value="Data Fechamento:"/>
                         <p:calendar value="#{projetoBean.projeto.dataFechamento}" />
                         <h:outputText value="Gerente:"/>
-                        <p:selectOneMenu  value="#{projetoBean.projeto.gerente}" converter="ProfissionalConverter">
-                            <f:selectItems value="#{projetoBean.listaProfissional}" var="profissional" itemLabel="#{profissional.nome}" itemValue="#{profissional.id}"/>
+                        <p:selectOneMenu  value="#{projetoBean.projeto.gerente}" converter="ProfissionalConverter" >
+                            <f:selectItems value="#{projetoBean.listaProfissional}" var="gerente" itemLabel="#{gerente.nome}" itemValue="#{gerente}"/>
                         </p:selectOneMenu>
                         <p:commandButton action="#{projetoBean.salvar}" value="Salvar" ajax="false" />
                     </h:panelGrid>

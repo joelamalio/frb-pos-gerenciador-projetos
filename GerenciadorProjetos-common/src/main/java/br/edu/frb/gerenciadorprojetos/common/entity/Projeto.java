@@ -17,7 +17,9 @@ import javax.persistence.*;
     @NamedQuery(name = "Projeto.findById",
     query = "SELECT pr FROM PROJETO pr LEFT JOIN FETCH pr.gerente g LEFT JOIN FETCH pr.tarefas t WHERE pr.id = :id "),
     @NamedQuery(name = "Projeto.findByNome",
-    query = "SELECT pr FROM PROJETO pr LEFT JOIN FETCH pr.gerente g LEFT JOIN FETCH pr.tarefas t WHERE pr.nome LIKE :nome ORDER BY pr.nome ASC ")})
+    query = "SELECT pr FROM PROJETO pr LEFT JOIN FETCH pr.gerente g LEFT JOIN FETCH pr.tarefas t WHERE pr.nome LIKE :nome ORDER BY pr.nome ASC "),
+    @NamedQuery(name = "Projeto.findByCodigo",
+    query = "SELECT pr FROM PROJETO pr WHERE pr.codigo = :codigo ")})
 public class Projeto implements Serializable {
 
     @Id

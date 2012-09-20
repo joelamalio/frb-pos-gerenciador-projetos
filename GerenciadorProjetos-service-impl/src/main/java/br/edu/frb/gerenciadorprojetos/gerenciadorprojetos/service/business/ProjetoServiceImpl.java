@@ -26,7 +26,7 @@ public class ProjetoServiceImpl implements ProjetoService {
     public List<Projeto> listar() {
         return dao.listarTodos(Projeto.class);
     }
-    
+
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     @Override
     public Projeto obterPorId(final Long id) {
@@ -35,7 +35,7 @@ public class ProjetoServiceImpl implements ProjetoService {
         param.put("id", id);
         return (Projeto) dao.buscarPorNamedQuery("Projeto.findById", param).get(0);
     }
-    
+
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     @Override
     public List<Projeto> listar(final Projeto projeto) {
@@ -51,12 +51,29 @@ public class ProjetoServiceImpl implements ProjetoService {
         return dao.buscarPorNamedQuery("Projeto.findByNome", param);
     }
 
+    @TransactionAttribute(TransactionAttributeType.SUPPORTS)
+    @Override
+    public Projeto obterProjetoPorCodigo(String codigo) {
+        final Map<String, Object> param = new HashMap<String, Object>();
+        if (codigo == null || codigo.isEmpty()) {
+            codigo = "";
+        }
+
+        param.put("codigo", codigo);
+        List<Projeto> projetos = dao.buscarPorNamedQuery("Projeto.findByCodigo", param);
+        if (projetos.isEmpty()) {
+            return null;
+        } else {
+            return projetos.get(0);
+        }
+    }
+
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     @Override
     public void salvar(Projeto projeto) {
         dao.salvar(projeto);
     }
-    
+
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     @Override
     public void atualizar(Projeto projeto) {

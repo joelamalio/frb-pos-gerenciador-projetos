@@ -17,6 +17,8 @@ public interface ProjetoService extends Serializable {
     List<Projeto> listar(Projeto projeto);
     
     Projeto obterPorId(Long id);
+    
+    Projeto obterProjetoPorCodigo(String codigo);
 
     void salvar(Projeto projeto);
     
