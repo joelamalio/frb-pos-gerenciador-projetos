@@ -20,15 +20,27 @@
                         <p:growl autoUpdate="true" showDetail="true" id="messages"/>
                         <h:panelGrid>
                             <p:fieldset legend="Acesso Restrito">
-                                <h:outputLabel value="E-mail: " for="email" />
-                                <h:inputText id="email" value="#{loginBean.usuario.email}" 
-                                             required="true" label="E-mail" 
-                                             requiredMessage="O campo E-mail é obrigatório" />
-                                <h:message for="messages" errorClass="errors" />
-                                <h:outputLabel value="Senha: " for="senha" />
-                                <h:inputSecret id="senha" value="#{loginBean.usuario.senha}" />
-                                <br />
-                                <p:commandButton value="Logar" action="#{loginBean.logar}" ajax="false" />
+                                <h:panelGrid cellpadding="5" style="width: 100%"> 
+                                    <p:column>
+                                        <h:outputLabel value="E-mail: " for="email" />
+                                        <h:inputText id="email" value="#{loginBean.usuario.email}" 
+                                                     required="true" label="E-mail" 
+                                                     requiredMessage="O campo E-mail é obrigatório" />
+                                    </p:column>
+                                    <p:column>
+                                        <h:outputLabel value="Senha: " for="senha" />
+                                        <h:inputSecret id="senha" value="#{loginBean.usuario.senha}" />
+                                    </p:column>
+                                    <p:column>
+                                        <p:commandButton value="Logar" action="#{loginBean.logar}" ajax="false" />
+                                    </p:column>
+                                    <p:column>
+                                        <h:outputText value="USUÁRIO PADRÃO: admin@frb.edu.br" />
+                                    </p:column>
+                                    <p:column>
+                                        <h:outputText value="SENHA: admin" />
+                                    </p:column>
+                                </h:panelGrid>
                             </p:fieldset>
                         </h:panelGrid>
                     </h:form>
