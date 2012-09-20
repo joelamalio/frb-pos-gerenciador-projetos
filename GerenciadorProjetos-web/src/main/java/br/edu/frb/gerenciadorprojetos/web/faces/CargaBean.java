@@ -3,6 +3,7 @@ package br.edu.frb.gerenciadorprojetos.web.faces;
 import br.edu.frb.gerenciadorprojetos.common.business.FuncaoService;
 import br.edu.frb.gerenciadorprojetos.common.business.ProfissionalService;
 import br.edu.frb.gerenciadorprojetos.common.business.ProjetoService;
+import br.edu.frb.gerenciadorprojetos.common.business.TarefaService;
 import br.edu.frb.gerenciadorprojetos.common.entity.*;
 import br.edu.frb.gerenciadorprojetos.gerenciadorprojetos.service.business.LoginService;
 import java.io.Serializable;
@@ -27,6 +28,8 @@ public class CargaBean implements Serializable {
     private ProfissionalService profissionalService;
     @EJB
     private ProjetoService projetoService;
+    @EJB
+    private TarefaService tarefaService;
     private boolean iniciado = false;
     
     public String prepararBanco() {
@@ -34,6 +37,7 @@ public class CargaBean implements Serializable {
         this.inserirUsuario();
         this.inserirProfissional();
         this.inserirProjeto();
+        this.inserirTarefa();
         this.iniciado = true;
         return this.redirecionarParaLogin();
     }
@@ -133,6 +137,16 @@ public class CargaBean implements Serializable {
         projeto2.setDataPrevisaoTermino(new Date(112, 12, 1));
         projeto2.setGerente(this.profissionalService.listar(new Profissional("Gerente 2")).get(0));
         this.projetoService.salvar(projeto2);
+    }
+    
+    private void inserirTarefa() {
+        final Tarefa tarefa1 = new Tarefa();
+        tarefa1.setDataInicio(new Date(112, 1, 1));
+        tarefa1.setDataTermino(new Date(112, 1, 1));
+        tarefa1.setDescricao("Tarefa de configuracao do ambiente de desenvolvimento.");
+        tarefa1.setResponsavel(this.profissionalService.listar(new Profissional("Usuário 2")).get(0));
+        tarefa1.setProjeto(this.projetoService.obterProjetoPorCodigo("PROJ-2"));
+        this.tarefaService.salvar(tarefa1);
     }
     
 }
