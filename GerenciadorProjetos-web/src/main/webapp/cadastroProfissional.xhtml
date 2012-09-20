@@ -20,27 +20,27 @@
                             <h:panelGrid cellpadding="5">  
                                 <p:column>
                                     <h:outputText value="Nome:"/>
-                                    <p:inputText value="#{profissionalBean.profissional.nome}" required="true"  requiredMessage="Nome Obrigatorio"  />
+                                    <p:inputText value="#{profissionalBean.profissional.nome}" required="true"  requiredMessage="Nome Obrigatório"  />
                                 </p:column>
                                 <p:column>
                                     <h:outputText value="E-mail:"/>
-                                    <p:inputText value="#{profissionalBean.profissional.usuario.email}" required="true" requiredMessage="E-mail Obrigatorio"/>
+                                    <p:inputText value="#{profissionalBean.profissional.usuario.email}" required="true" requiredMessage="E-mail Obrigatório"/>
                                 </p:column>
                                 <p:column>
                                     <h:outputText value="Senha:"/>
-                                    <p:password value="#{profissionalBean.profissional.usuario.senha}" required="true" requiredMessage="Senha Obrigatorio"/>
+                                    <p:password value="#{profissionalBean.profissional.usuario.senha}" required="true" requiredMessage="Senha Obrigatório"/>
                                 </p:column>
                                 <p:column>
                                     <h:outputText value="Cpf:"/>
-                                    <p:inputMask mask="999.999.999-99" value="#{profissionalBean.profissional.cpf}" required="true" requiredMessage="Cpf Obrigatorio"/>
+                                    <p:inputMask mask="999.999.999-99" value="#{profissionalBean.profissional.cpf}" required="true" requiredMessage="Cpf Obrigatório"/>
                                 </p:column>
                                 <p:column>
                                     <h:outputText value="Data de Nascimento:"/>
-                                    <p:calendar value="#{profissionalBean.profissional.dataNascimento}" required="true" requiredMessage="Data Nascimento Obrigatorio"/>
+                                    <p:calendar value="#{profissionalBean.profissional.dataNascimento}" required="true" requiredMessage="Data de Nascimento Obrigatório"/>
                                 </p:column>
                                 <p:column>
                                     <h:outputText value="Grau de Instrução:"/>
-                                    <p:selectOneMenu  value="#{profissionalBean.profissional.grauInstrucao}" required="true" requiredMessage="Grau de Instrução Obrigatorio">
+                                    <p:selectOneMenu  value="#{profissionalBean.profissional.grauInstrucao}" required="true" requiredMessage="Grau de Instrução Obrigatório">
                                         <f:selectItems value="#{profissionalBean.listaGrauInstrucao}" var="grauInstrucao" itemLabel="#{grauInstrucao.descricao}" itemValue="#{grauInstrucao.descricao}"/>
                                     </p:selectOneMenu>
                                 </p:column>
@@ -52,7 +52,7 @@
                                 </p:column>
                                 <p:column>
                                     <h:outputText value="Data de Admissão:"/>
-                                    <p:calendar value="#{profissionalBean.profissional.dataAdmissao}"  required="true" requiredMessage="Data Admissão Obrigatorio"/>
+                                    <p:calendar value="#{profissionalBean.profissional.dataAdmissao}"  required="true" requiredMessage="Data de Admissão Obrigatório"/>
                                 </p:column>
                                 <p:column>
                                     <p:commandButton action="#{profissionalBean.salvar}" value="Salvar" ajax="false" />
