@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:body>
+
+        <ui:composition template="template/template.xhtml">
+            <ui:define name="content">
+                <h:form id="formProjetoEncerra">
+                    <h:panelGrid>
+                        <p:breadCrumb>  
+                            <p:menuitem value="Home" url="#" />  
+                            <p:menuitem value="Projetos" url="#" />  
+                        </p:breadCrumb>  
+                        <p:fieldset legend="Encerrar Projeto">
+                            <h:panelGrid cellpadding="5">  
+                                <p:column>
+                                    <h:outputText value="Código:"/>
+                                    <h:outputText value="#{projetoBean.projeto.codigo}" />
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="Nome:"/>
+                                    <h:outputText value="#{projetoBean.projeto.nome}" />
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="Data de Abertura:"/>
+                                    <h:outputText value="#{projetoBean.projeto.dataAbertura}" />
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="Data Prevista de Término:"/>
+                                    <h:outputText value="#{projetoBean.projeto.dataPrevisaoTermino}" />
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="Data de Fechamento:"/>
+                                    <h:outputText value="#{projetoBean.projeto.dataFechamento}" />
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="Gerente:"/>
+                                    <h:outputText value="#{projetoBean.projeto.gerente}" />
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton action="#{projetoBean.initPesquisa}" value="Voltar" ajax="false" />
+                                </p:column>
+                            </h:panelGrid>  
+                        </p:fieldset>
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

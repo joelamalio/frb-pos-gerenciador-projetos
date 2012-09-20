@@ -45,7 +45,7 @@ public class ProjetoBean implements Serializable {
     }
 
     public void pesquisar() {
-        listaProjeto = projetoService.listar();
+        listaProjeto = projetoService.listar(projeto);
         this.tamanhoListaProjeto = this.listaProjeto.size();
     }
     
@@ -54,6 +54,11 @@ public class ProjetoBean implements Serializable {
         this.listaProjeto = new ArrayList<Projeto>();
         this.tamanhoListaProjeto = 0;
         return "listaProjeto";
+    }
+    
+    public String initEncerrar(final Long id) {
+        this.projeto = this.projetoService.obterPorId(id);
+        return "encerraProjeto";
     }
 
     public List<Profissional> getListaProfissional() {

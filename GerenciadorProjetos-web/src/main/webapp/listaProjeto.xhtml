@@ -9,30 +9,33 @@
 
         <ui:composition template="template/template.xhtml">
             <ui:define name="content">
-
-                <h:form id="formProjeto">
+                <h:form id="formProjetoLista">
+                    <p:growl autoUpdate="true" showDetail="true" id="messages"/>
                     <h:panelGrid>
                         <p:breadCrumb>  
                             <p:menuitem value="Home" url="#" />  
                             <p:menuitem value="Projetos" url="#" />  
                         </p:breadCrumb>  
-                        <p:fieldset legend="Filtro">  
+                        <p:fieldset legend="Filtro" style="width: 100%">   
                             <h:panelGrid cellpadding="5">  
                                 <p:column>
                                     <h:outputText value="Nome:"/>
                                     <p:inputText value="#{projetoBean.projeto.nome}" />
                                 </p:column>
-                                <p:column>
-                                <p:commandButton action="#{projetoBean.initPesquisa}" value="Limpar" update="formProjeto" immediate="true"/>
-                                <p:commandButton action="#{projetoBean.pesquisar}" value="Pesquisar" update="resultados" immediate="true" ajax="false"/>
-                                <p:commandButton action="#{projetoBean.abrirProjeto}" value="Abrir Projeto" process="@this" update="@none" immediate="true" ajax="false" />
-                                </p:column>
+                                <p:columnGroup>
+                                    <p:commandButton action="#{projetoBean.pesquisar}" value="Pesquisar" immediate="true" ajax="false"/>
+                                    <p:commandButton action="#{projetoBean.initPesquisa}" value="Limpar" ajax="false" update="formProjetoLista" immediate="true"/>
+                                    <p:commandButton action="#{projetoBean.abrirProjeto}" value="Abrir Projeto" process="@this" update="@none" immediate="true" ajax="false" />
+                                </p:columnGroup>
                             </h:panelGrid>  
                         </p:fieldset>
                         <h:panelGroup id="resultados">
                             <p:fieldset legend="Resultado" rendered="#{projetoBean.tamanhoListaProjeto > 0}">  
                                 <h:panelGrid cellpadding="10" >  
-                                    <p:dataTable id="listaProjeto" value="#{projetoBean.listaProjeto}" var="projeto" emptyMessage="Nenhum projeto encontrado.">
+                                    <p:dataTable id="listaProjetos" value="#{projetoBean.listaProjeto}" var="projeto" emptyMessage="Nenhum projeto encontrado.">
+                                        <p:column headerText="">
+                                            <p:commandButton action="#{projetoBean.initEncerrar(projeto.id)}" value="Encerrar" ajax="false" immediate="true"/>
+                                        </p:column>
                                         <p:column sortBy="#{projeto.codigo}" headerText="Código">
                                             <h:outputText value="#{projeto.codigo}" />
                                         </p:column>

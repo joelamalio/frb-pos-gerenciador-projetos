@@ -12,6 +12,11 @@ import javax.persistence.*;
  * @author joelamalio
  */
 @Entity(name = "PROJETO")
+@NamedQueries({
+    @NamedQuery(name = "Projeto.findById",
+    query = "SELECT pr FROM PROJETO pr LEFT JOIN FETCH pr.gerente g LEFT JOIN FETCH pr.tarefas t WHERE pr.id = :id "),
+@NamedQuery(name = "Projeto.findByNome",
+    query = "SELECT pr FROM PROJETO pr LEFT JOIN FETCH pr.gerente g LEFT JOIN FETCH pr.tarefas t WHERE pr.nome LIKE :nome ORDER BY pr.nome ASC ")})
 public class Projeto implements Serializable {
 
     @Id

@@ -7,11 +7,16 @@ import javax.ejb.Remote;
 
 /**
  * @author brunomsc
+ * @joelamalio
  */
 @Remote
 public interface ProjetoService extends Serializable {
 
     List<Projeto> listar();
+    
+    List<Projeto> listar(Projeto projeto);
+    
+    Projeto obterPorId(Long id);
 
     void salvar(Projeto projeto);
 }
