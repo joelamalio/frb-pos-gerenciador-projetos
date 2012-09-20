@@ -15,11 +15,10 @@
 
             <ui:define name="header" ></ui:define>
             <ui:define name="content">
-                <div id="container">
+                <div id="container" align="center">
                     <h:form id="formLogin" prependId="true">
                         <p:growl autoUpdate="true" showDetail="true" id="messages"/>
                         <h:panelGrid>
-                            <p:commandButton action="#{loginBean.novoUsuario}" value="Cadastrar Usuário" immediate="true" ajax="false"/>
                             <p:fieldset legend="Acesso Restrito">
                                 <h:outputLabel value="E-mail: " for="email" />
                                 <h:inputText id="email" value="#{loginBean.usuario.email}" 

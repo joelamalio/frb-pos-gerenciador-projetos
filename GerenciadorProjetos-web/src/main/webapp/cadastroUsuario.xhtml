@@ -13,27 +13,37 @@
                         template="/template/template.xhtml"
                         xmlns:p="http://primefaces.org/ui">
 
-            <ui:define name="header" ></ui:define>
             <ui:define name="content">
                 <div id="container">
                     <h:form id="formCadastroUsuario" prependId="true">
                         <p:growl autoUpdate="true" showDetail="true" id="messages"/>
                         <h:panelGrid>
-                            <p:fieldset legend="Cadastro de Usuário">
-                                <h:outputLabel value="E-mail: " for="email" />
-                                <h:inputText id="email" value="#{loginBean.usuario.email}" 
-                                             required="true" label="E-mail" 
-                                             requiredMessage="O campo E-mail é obrigatório" />
-                                <h:message for="messages" errorClass="errors" />
-                                <h:outputLabel value="Senha: " for="senha" />
-                                <h:inputSecret id="senha" value="#{loginBean.usuario.senha}" />
-                                <p:commandButton value="Salvar" action="#{loginBean.salvarUsuario}" ajax="false" />
+                            <p:breadCrumb>  
+                                <p:menuitem value="Home" url="#" />  
+                                <p:menuitem value="Usuários" url="#" />  
+                            </p:breadCrumb>  
+                            <p:fieldset legend="Cadastro de Usuário" style="width: 100%">
+                                <h:panelGrid cellpadding="5"> 
+                                    <p:column>
+                                        <h:outputLabel value="E-mail: " for="email" />
+                                        <h:inputText id="email" value="#{loginBean.usuario.email}" 
+                                                     required="true" label="E-mail" 
+                                                     requiredMessage="O campo E-mail é obrigatório" />
+                                    </p:column>
+                                    <p:column>
+                                        <h:outputLabel value="Senha: " for="senha" />
+                                        <h:inputSecret id="senha" value="#{loginBean.usuario.senha}" />
+                                    </p:column>
+                                    <p:column>
+                                        <p:commandButton value="Salvar" action="#{loginBean.salvarUsuario}" ajax="false" />
+                                    </p:column>
+                                </h:panelGrid>
                             </p:fieldset>
                         </h:panelGrid>
                     </h:form>
                 </div>
             </ui:define>
-            
+
         </ui:composition>
 
     </h:body>

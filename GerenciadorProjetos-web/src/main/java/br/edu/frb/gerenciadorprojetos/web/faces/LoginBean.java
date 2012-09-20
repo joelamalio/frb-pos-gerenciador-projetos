@@ -43,7 +43,7 @@ public class LoginBean implements Serializable {
         service.salvarUsuario(usuario);
         usuario = new Usuario();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Usuário cadastrado com sucesso!"));
-        return "login";
+        return "index";
     }
 
     public Usuario getUsuario() {

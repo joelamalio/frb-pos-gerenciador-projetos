@@ -12,31 +12,53 @@
                 <h:form id="formCadastro">
                     <p:growl autoUpdate="true" id="messages"/>
                     <h:panelGrid>
-                        <h:panelGroup>
-                            <h:outputText value="Cadastro de Profissional"/>
-                            <h:outputText/>
-                        </h:panelGroup>
-                        <h:outputText value="Nome:"/>
-                        <p:inputText value="#{profissionalBean.profissional.nome}" required="true"  requiredMessage="Nome Obrigatorio"  />
-                        <h:outputText value="E-mail:"/>
-                        <p:inputText value="#{profissionalBean.profissional.usuario.email}" required="true" requiredMessage="E-mail Obrigatorio"/>
-                        <h:outputText value="Senha:"/>
-                        <p:password value="#{profissionalBean.profissional.usuario.senha}" required="true" requiredMessage="Senha Obrigatorio"/>
-                        <h:outputText value="Cpf:"/>
-                        <p:inputMask mask="999.999.999-99" value="#{profissionalBean.profissional.cpf}" required="true" requiredMessage="Cpf Obrigatorio"/>
-                        <h:outputText value="Data Nascimento:"/>
-                        <p:calendar value="#{profissionalBean.profissional.dataNascimento}" required="true" requiredMessage="Data Nascimento Obrigatorio"/>
-                        <h:outputText value="Grau de Instrução:"/>
-                        <p:selectOneMenu  value="#{profissionalBean.profissional.grauInstrucao}" required="true" requiredMessage="Grau de Instrução Obrigatorio">
-                            <f:selectItems value="#{profissionalBean.listaGrauInstrucao}" var="grauInstrucao" itemLabel="#{grauInstrucao.descricao}" itemValue="#{grauInstrucao.descricao}"/>
-                        </p:selectOneMenu>
-                        <h:outputText value="Função:"/>
-                        <p:selectOneMenu value="#{profissionalBean.profissional.funcao}" converter="FuncaoConverter">
-                            <f:selectItems value="#{profissionalBean.listaFuncao}" var="funcao" itemLabel="#{funcao.descricao}" itemValue="#{funcao}"/>
-                        </p:selectOneMenu>
-                        <h:outputText value="Data Admissão:"/>
-                        <p:calendar value="#{profissionalBean.profissional.dataAdmissao}"  required="true" requiredMessage="Data Admissão Obrigatorio"/>
-                        <p:commandButton action="#{profissionalBean.salvar}" value="Salvar" ajax="false" />
+                        <p:breadCrumb>  
+                            <p:menuitem value="Home" url="#" />  
+                            <p:menuitem value="Profissionais" url="#" />  
+                        </p:breadCrumb>  
+                        <p:fieldset legend="Cadastro de Profissional" style="width: 100%">
+                            <h:panelGrid cellpadding="5">  
+                                <p:column>
+                                    <h:outputText value="Nome:"/>
+                                    <p:inputText value="#{profissionalBean.profissional.nome}" required="true"  requiredMessage="Nome Obrigatorio"  />
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="E-mail:"/>
+                                    <p:inputText value="#{profissionalBean.profissional.usuario.email}" required="true" requiredMessage="E-mail Obrigatorio"/>
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="Senha:"/>
+                                    <p:password value="#{profissionalBean.profissional.usuario.senha}" required="true" requiredMessage="Senha Obrigatorio"/>
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="Cpf:"/>
+                                    <p:inputMask mask="999.999.999-99" value="#{profissionalBean.profissional.cpf}" required="true" requiredMessage="Cpf Obrigatorio"/>
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="Data de Nascimento:"/>
+                                    <p:calendar value="#{profissionalBean.profissional.dataNascimento}" required="true" requiredMessage="Data Nascimento Obrigatorio"/>
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="Grau de Instrução:"/>
+                                    <p:selectOneMenu  value="#{profissionalBean.profissional.grauInstrucao}" required="true" requiredMessage="Grau de Instrução Obrigatorio">
+                                        <f:selectItems value="#{profissionalBean.listaGrauInstrucao}" var="grauInstrucao" itemLabel="#{grauInstrucao.descricao}" itemValue="#{grauInstrucao.descricao}"/>
+                                    </p:selectOneMenu>
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="Função:"/>
+                                    <p:selectOneMenu value="#{profissionalBean.profissional.funcao}" converter="FuncaoConverter">
+                                        <f:selectItems value="#{profissionalBean.listaFuncao}" var="funcao" itemLabel="#{funcao.descricao}" itemValue="#{funcao}"/>
+                                    </p:selectOneMenu>
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="Data de Admissão:"/>
+                                    <p:calendar value="#{profissionalBean.profissional.dataAdmissao}"  required="true" requiredMessage="Data Admissão Obrigatorio"/>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton action="#{profissionalBean.salvar}" value="Salvar" ajax="false" />
+                                </p:column>
+                            </h:panelGrid>
+                        </p:fieldset>
                     </h:panelGrid>
                 </h:form>
             </ui:define>
