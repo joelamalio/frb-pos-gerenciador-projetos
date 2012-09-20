@@ -42,7 +42,10 @@ public class Funcao implements Serializable {
 
     @Override
     public String toString() {
-        return descricao;
+        if (id != null) {
+            return id.toString();
+        }
+        return "";
     }
 
     @Override

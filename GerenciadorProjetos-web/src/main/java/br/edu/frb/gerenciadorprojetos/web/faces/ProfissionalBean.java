@@ -43,8 +43,6 @@ public class ProfissionalBean implements Serializable {
     }
 
     public String salvar() {
-        profissional.setUsuario(null);
-        profissional.setTarefas(null);
         profissionalService.salvar(profissional);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Profissional Salvo"));
         return initPesquisa();

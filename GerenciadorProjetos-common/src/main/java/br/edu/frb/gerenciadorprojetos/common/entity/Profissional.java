@@ -13,7 +13,8 @@ import javax.persistence.*;
  */
 @Entity(name = "PROFISSIONAL")
 @NamedQueries({
-    @NamedQuery(name = "Profissional.findByNome", query = "SELECT p FROM PROFISSIONAL p WHERE p.nome LIKE :nome")})
+    @NamedQuery(name = "Profissional.findByNome",
+    query = "SELECT p FROM PROFISSIONAL p LEFT JOIN FETCH p.funcao LEFT JOIN FETCH p.usuario f WHERE p.nome LIKE :nome ORDER BY p.nome ASC")})
 public class Profissional implements Serializable {
 
     @Id
@@ -36,10 +37,10 @@ public class Profissional implements Serializable {
     @Enumerated(value = EnumType.STRING)
     @Column(name = "PROF_GRAU_INSTRUCAO")
     private GrauInstrucao grauInstrucao;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "USUA_ID", referencedColumnName = "USUA_ID")
     private Usuario usuario;
-    @OneToMany(mappedBy = "responsavel", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "responsavel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Tarefa> tarefas = new HashSet<Tarefa>();
 
     public Profissional() {

@@ -29,12 +29,15 @@ public class ProfissionalServiceImpl implements ProfissionalService {
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     @Override
     public List<Profissional> listar(Profissional profissional) {
+        final Map<String, Object> param = new HashMap<String, Object>();
+        final String nome;
         if (profissional.getNome() == null || profissional.getNome().isEmpty()) {
-            return listar();
+            nome = "";
+        } else {
+            nome = profissional.getNome().trim();
         }
 
-        Map<String, Object> param = new HashMap<String, Object>();
-        param.put("nome", "%" + profissional.getNome() + "%");
+        param.put("nome", "%" + nome + "%");
         return dao.buscarPorNamedQuery("Profissional.findByNome", param);
     }
 

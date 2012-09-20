@@ -18,9 +18,6 @@ public class Usuario implements Serializable {
     private String email;
     @Column(name = "USUA_SENHA")
     private String senha;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PROF_ID", referencedColumnName = "PROF_ID")
-    private Profissional profissional;
 
     public Usuario() {
     }
@@ -37,10 +34,6 @@ public class Usuario implements Serializable {
         return email;
     }
 
-    public Profissional getProfissional() {
-        return profissional;
-    }
-
     public void setEmail(final String email) {
         if (email != null) {
             this.email = email.toLowerCase();
@@ -53,10 +46,6 @@ public class Usuario implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public void setProfissional(Profissional profissional) {
-        this.profissional = profissional;
     }
 
     @Override
