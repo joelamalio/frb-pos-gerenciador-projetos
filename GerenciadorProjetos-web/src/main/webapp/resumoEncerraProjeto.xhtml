@@ -11,13 +11,12 @@
         <ui:composition template="template/template.xhtml">
             <ui:define name="content">
                 <h:form id="formProjetoEncerra">
-                    <p:growl autoUpdate="true" showDetail="true" id="messages"/>
                     <h:panelGrid>
                         <p:breadCrumb>  
                             <p:menuitem value="Home" url="#" />  
                             <p:menuitem value="Projetos" url="#" />  
                         </p:breadCrumb>  
-                        <p:fieldset legend="Encerrar Projeto">
+                        <p:fieldset legend="Resumo do Projeto">
                             <h:panelGrid cellpadding="5">  
                                 <p:column>
                                     <h:outputText value="Código: "/>
@@ -37,15 +36,14 @@
                                 </p:column>
                                 <p:column>
                                     <h:outputText value="Data de Fechamento: "/>
-                                    <p:calendar value="#{projetoBean.projeto.dataFechamento}" required="true" requiredMessage="Data de Fechamento Obrigatório"/>
+                                    <h:outputText value="#{projetoBean.projeto.dataFechamento}" />
                                 </p:column>
                                 <p:column>
                                     <h:outputText value="Gerente: "/>
                                     <h:outputText value="#{projetoBean.projeto.gerente}" />
                                 </p:column>
                                 <p:column>
-                                    <p:commandButton action="#{projetoBean.encerrar}" value="Encerrar" ajax="false" />
-                                    <p:commandButton action="#{projetoBean.initPesquisa}" value="Voltar" ajax="false" immediate="true" />
+                                    <p:commandButton action="#{projetoBean.initPesquisa}" value="Voltar" ajax="false" />
                                 </p:column>
                             </h:panelGrid>  
                         </p:fieldset>

@@ -89,19 +89,32 @@ public class CargaBean implements Serializable {
         profissional2.setDataNascimento(new Date(92, 1, 1));
         profissional2.setDataAdmissao(new Date(112, 2, 22));
         this.profissionalService.salvar(profissional2);
-        final Usuario usuarioGerente = new Usuario();
-        usuarioGerente.setEmail("gerente1@frb.edu.br");
-        usuarioGerente.setSenha("gerente1");
-        this.loginService.salvarUsuario(usuarioGerente);
+        final Usuario usuarioGerente1 = new Usuario();
+        usuarioGerente1.setEmail("gerente1@frb.edu.br");
+        usuarioGerente1.setSenha("gerente1");
+        this.loginService.salvarUsuario(usuarioGerente1);
         final Profissional gerente1 = new Profissional();
         gerente1.setFuncao(this.funcaoService.listar(new Funcao("GERENTE")).get(0));
-        gerente1.setUsuario(usuarioGerente);
+        gerente1.setUsuario(usuarioGerente1);
         gerente1.setNome("Gerente 1");
         gerente1.setGrauInstrucao(GrauInstrucao.MESTRADO);
         gerente1.setCpf("999.999.999-99");
         gerente1.setDataNascimento(new Date(82, 2, 2));
         gerente1.setDataAdmissao(new Date(100, 2, 22));
         this.profissionalService.salvar(gerente1);
+        final Usuario usuarioGerente2 = new Usuario();
+        usuarioGerente2.setEmail("gerente2@frb.edu.br");
+        usuarioGerente2.setSenha("gerente2");
+        this.loginService.salvarUsuario(usuarioGerente1);
+        final Profissional gerente2 = new Profissional();
+        gerente2.setFuncao(this.funcaoService.listar(new Funcao("GERENTE")).get(0));
+        gerente2.setUsuario(usuarioGerente2);
+        gerente2.setNome("Gerente 2");
+        gerente2.setGrauInstrucao(GrauInstrucao.MESTRADO);
+        gerente2.setCpf("999.999.999-88");
+        gerente2.setDataNascimento(new Date(82, 2, 2));
+        gerente2.setDataAdmissao(new Date(100, 2, 22));
+        this.profissionalService.salvar(gerente2);
     }
     
     private void inserirProjeto() {
@@ -113,6 +126,13 @@ public class CargaBean implements Serializable {
         projeto1.setDataFechamento(new Date(112, 9, 18));
         projeto1.setGerente(this.profissionalService.listar(new Profissional("Gerente 1")).get(0));
         this.projetoService.salvar(projeto1);
+        final Projeto projeto2 = new Projeto();
+        projeto2.setCodigo("PROJ-2");
+        projeto2.setNome("PROJETO 2");
+        projeto2.setDataAbertura(new Date(112, 1, 1));
+        projeto2.setDataPrevisaoTermino(new Date(112, 12, 1));
+        projeto2.setGerente(this.profissionalService.listar(new Profissional("Gerente 2")).get(0));
+        this.projetoService.salvar(projeto2);
     }
     
 }

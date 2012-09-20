@@ -25,14 +25,13 @@ public class ProjetoBean implements Serializable {
     private ProjetoService projetoService;
     @EJB
     private ProfissionalService profissionalService;
-    
     private Projeto projeto;
     private List<Projeto> listaProjeto;
     private Integer tamanhoListaProjeto;
 
     public ProjetoBean() {
     }
-    
+
     public String abrirProjeto() {
         projeto = new Projeto();
         return "cadastroProjeto";
@@ -48,17 +47,37 @@ public class ProjetoBean implements Serializable {
         listaProjeto = projetoService.listar(projeto);
         this.tamanhoListaProjeto = this.listaProjeto.size();
     }
-    
+
     public String initPesquisa() {
         this.projeto = new Projeto();
         this.listaProjeto = new ArrayList<Projeto>();
         this.tamanhoListaProjeto = 0;
         return "listaProjeto";
     }
-    
+
     public String initEncerrar(final Long id) {
         this.projeto = this.projetoService.obterPorId(id);
         return "encerraProjeto";
+    }
+
+    public String encerrar() {
+        if (projeto != null) {
+            if (projeto.getDataAbertura().after(projeto.getDataFechamento())) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "A 'Data de Fechamento' não pode ser menor que a 'Data de Abertura'"));
+            } else {
+                projetoService.salvar(projeto);
+                return this.resumo(projeto.getId());
+            }
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Projeto com ID nulo."));
+        }
+        return null;
+    }
+    
+    public String resumo(final Long id) {
+        this.projeto = this.projetoService.obterPorId(id);
+        return "resumoEncerraProjeto";
+        
     }
 
     public List<Profissional> getListaProfissional() {
@@ -72,7 +91,7 @@ public class ProjetoBean implements Serializable {
     public Integer getTamanhoListaProjeto() {
         return tamanhoListaProjeto;
     }
-    
+
     public void setProjeto(Projeto projeto) {
         this.projeto = projeto;
     }

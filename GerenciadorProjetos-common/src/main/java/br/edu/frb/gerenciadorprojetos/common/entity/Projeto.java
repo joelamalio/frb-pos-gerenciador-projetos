@@ -137,6 +137,13 @@ public class Projeto implements Serializable {
         }
         this.tarefas.remove(tarefa);
     }
+    
+    public boolean isEncerrado() {
+        if (this.dataFechamento == null) {
+            return false;
+        }
+        return true;
+    }
 
     @Override
     public boolean equals(Object obj) {

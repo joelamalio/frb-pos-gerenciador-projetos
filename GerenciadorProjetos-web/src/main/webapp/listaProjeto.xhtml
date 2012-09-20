@@ -34,7 +34,8 @@
                                 <h:panelGrid cellpadding="10" >  
                                     <p:dataTable id="listaProjetos" value="#{projetoBean.listaProjeto}" var="projeto" emptyMessage="Nenhum projeto encontrado.">
                                         <p:column headerText="">
-                                            <p:commandButton action="#{projetoBean.initEncerrar(projeto.id)}" value="Encerrar" ajax="false" immediate="true"/>
+                                            <p:commandButton rendered="#{not projeto.encerrado}" action="#{projetoBean.initEncerrar(projeto.id)}" value="Encerrar" ajax="false" immediate="true"/>
+                                            <p:commandButton rendered="#{projeto.encerrado}" action="#{projetoBean.resumo(projeto.id)}" value="Resumo" ajax="false" immediate="true"/>
                                         </p:column>
                                         <p:column sortBy="#{projeto.codigo}" headerText="Código">
                                             <h:outputText value="#{projeto.codigo}" />
